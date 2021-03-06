@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Mate</string>
+    <string name="app_name">Match Cat</string>
     <string name="login">Login</string>
+    <string name="register"><u>daftar</u></string>
 </resources>

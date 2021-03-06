@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Mate" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Mate" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/salem</item>
+        <item name="colorPrimaryVariant">@color/salem</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -22,4 +22,23 @@
         <item name="android:backgroundTint">@android:color/white</item>
     </style>
 
+    <style name="MyTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/salem</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="boxStrokeColor">@color/salem</item>
+<!--        <item name="b"-->
+    </style>
+
+    <style name="MyTextInputEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox.Dense">
+        <item name="android:textColor">@color/jeans</item>
+    </style>
+
+    <style name="SwitchCustom">
+        <item name="colorControlActivated">@color/salem</item>
+<!--        <item name="colorCon"-->
+    </style>
+    <style name="slider_red">
+        <item name="colorPrimary">@color/salem</item>
+    </style>
 </resources>

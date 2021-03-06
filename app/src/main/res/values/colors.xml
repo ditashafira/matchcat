@@ -7,9 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="salem">#D8AC9C</color>
-    <color name="dark_salem">#634338</color>
-    <color name="light_salem">#F4D6CC</color>
-    <color name="soft_guava">#F4EEED</color>
+    <color name="salem">#F6A689</color>
+    <color name="jeans">#7C8C9B</color>
+    <color name="soft_guava">#FEF7EF</color>
     <color name="army">#999B84</color>
+    <color name="beige">#F4D5C0</color>
+    <color name="navy">#465B7E</color>
+    <color name="gray">#7C8C9B</color>
+
+    <color name="soft_gray">#D9DDDF</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#F6A689</color>
+
 </resources>

@@ -4,21 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backdrop_1"
+    android:background="@drawable/ic_android_mobile___1"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/path_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView5"
@@ -27,7 +14,7 @@
         android:layout_marginTop="40dp"
         android:text="Login"
         android:textAlignment="center"
-        android:textColor="@color/salem"
+        android:textColor="@color/navy"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,56 +26,117 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="332dp"
-        android:src="@drawable/logo_2"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/pic_logo_2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.019" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <dita.shafira.mate.component.BtnOutline
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/btnSolid"
+        style="@style/MyTextInputLayout"
         android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
-        android:text="Username"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/btnOutline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
-    <dita.shafira.mate.component.BtnOutline
+        <com.google.android.material.textfield.TextInputEditText
+
+            style="@style/MyTextInputEditText"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="username" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/btnSolid2"
+        style="@style/MyTextInputLayout"
         android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="Password"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnOutline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSolid"
-        app:layout_constraintVertical_bias="0.053" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSolid">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+
+            style="@style/MyTextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="password"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <dita.shafira.mate.component.BtnOutline-->
+<!--        android:id="@+id/btnSolid"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="42dp"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:layout_marginBottom="32dp"-->
+<!--        android:text="Username"-->
+<!--        android:textColor="@color/salem"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/btnOutline"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView3" />-->
+
+<!--    <dita.shafira.mate.component.BtnOutline-->
+<!--        android:id="@+id/btnSolid2"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="42dp"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:text="Password"-->
+<!--        android:textColor="@color/salem"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/imageView2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btnSolid"-->
+<!--        app:layout_constraintVertical_bias="0.053" />-->
 
     <TextView
+        android:id="@+id/textView24"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Belum punya akun ?"
-        android:textColor="@color/salem"
+        android:textColor="@color/gray"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/btnSolid2"
         app:layout_constraintTop_toBottomOf="@+id/btnSolid2" />
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/register"
+        android:textColor="@color/navy"
+        android:textSize="15sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/textView24"
+        app:layout_constraintStart_toEndOf="@+id/textView24"
+        app:layout_constraintTop_toTopOf="@+id/textView24" />
 
     <dita.shafira.mate.component.BtnSolid
         android:layout_width="0dp"
@@ -102,5 +150,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSolid2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

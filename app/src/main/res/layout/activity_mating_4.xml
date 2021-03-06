@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backdrop_1"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="9dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/back_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Judul Disini"
+        android:textColor="@color/navy"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+        app:layout_constraintStart_toEndOf="@+id/imageView15"
+        app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="194dp"
+        android:layout_height="258dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp"
+            android:src="@color/salem" />
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/photo_2"
+            android:layout_width="99dp"
+            android:layout_height="139dp"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:src="@color/salem" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/photo_5"
+            android:layout_width="99dp"
+            android:layout_height="139dp"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:src="@color/salem" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/photo_3"
+            android:layout_width="99dp"
+            android:layout_height="139dp"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:src="@color/salem" />
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/photo_4"
+            android:layout_width="99dp"
+            android:layout_height="139dp"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:src="@color/salem" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_1"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="16dp"
+        android:text="Nama Kucing"
+        android:textColor="@color/navy"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/text_2"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:text="Kelamin"
+        android:textAlignment="center"
+        android:textColor="@color/navy"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/text_1"
+        app:layout_constraintTop_toBottomOf="@+id/text_1" />
+
+    <TextView
+        android:id="@+id/text_3"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:text="Umur(thn)/Ras"
+        android:textAlignment="center"
+        android:textColor="@color/navy"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/text_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_2" />
+
+    <TextView
+        android:id="@+id/text_4"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:text="Status"
+        android:textAlignment="center"
+        android:textColor="@color/navy"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/text_3"
+        app:layout_constraintStart_toStartOf="@+id/text_3"
+        app:layout_constraintTop_toBottomOf="@+id/text_3" />
+
+    <LinearLayout
+        android:id="@+id/btnOutline_1"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_outline"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:text="Ubah"
+        android:textColor="@color/navy"
+        app:layout_constraintBottom_toTopOf="@+id/btnOutline_3"
+        app:layout_constraintStart_toStartOf="@+id/text_3">
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/btn_outline" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ubah"
+            android:textColor="@color/navy"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnOutline_2"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/btn_outline"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:text="Hapus"
+        android:textColor="@color/navy"
+        app:layout_constraintBottom_toBottomOf="@+id/btnOutline_1"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/btn_outline" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hapus"
+            android:textColor="@color/navy"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <dita.shafira.mate.component.BtnOutline
+        android:id="@+id/btnOutline_3"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Kucing Disukai"
+        android:textColor="@color/navy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnOutline_2"
+        app:layout_constraintStart_toStartOf="@+id/btnOutline_1" />
+</androidx.constraintlayout.widget.ConstraintLayout>
