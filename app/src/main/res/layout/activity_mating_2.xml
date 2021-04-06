@@ -72,6 +72,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
         <TextView
+            android:id="@+id/textView34"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:text="Umur/Ras"
@@ -112,8 +113,8 @@
         <ImageView
             android:id="@+id/imageView17"
             android:layout_width="80dp"
-            android:layout_height="35dp"
-            android:src="@drawable/location_1"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_location"
             app:layout_constraintEnd_toEndOf="@+id/textView22"
             app:layout_constraintStart_toStartOf="@+id/textView22"
             app:layout_constraintTop_toBottomOf="@+id/textView22" />
@@ -261,6 +262,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
     <dita.shafira.mate.component.BtnLightSolid
+        android:id="@+id/btnLightSolid"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginBottom="16dp"

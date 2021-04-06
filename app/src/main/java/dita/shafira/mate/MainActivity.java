@@ -14,6 +14,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dita.shafira.mate.component.BtnSolid;
 
+import static dita.shafira.mate.R.id.btnLightSolid;
+
 public class MainActivity extends AppCompatActivity {
 //    BtnSolid btnSolid;
 
@@ -30,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
     void setBtnSolid(View solid){
         Intent intent = new Intent(this,LoginActivity.class);
             startActivity(intent);
+    }
+
+    @OnClick(R.id.btnOutline)
+    void setBtnLightSolid(View lightSolid){
+        Intent intent = new Intent(this,RegisterActivity.class);
+        startActivity(intent);
     }
 //    @OnClick(R.id.register)
 //    void setRegister(View solid){

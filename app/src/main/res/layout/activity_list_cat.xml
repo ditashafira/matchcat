@@ -23,11 +23,11 @@
 
     <ImageView
         android:id="@+id/imageView11"
-        android:layout_width="9dp"
+        android:layout_width="20dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/back_1"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,6 +58,7 @@
         tools:listitem="@layout/item_list_cat" />
 
     <dita.shafira.mate.component.BtnOutline
+        android:id="@+id/btnoutline_4"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="32dp"
@@ -70,5 +71,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingClass,MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/imageView15"
-        android:layout_width="9dp"
+        android:layout_width="20dp"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
-        android:src="@drawable/back_1"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
@@ -73,7 +73,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/menu_layout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +116,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/menu_layout"
         app:layout_constraintEnd_toEndOf="parent"

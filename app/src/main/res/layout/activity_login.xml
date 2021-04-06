@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Login"
+        android:text="Masuk"
         android:textAlignment="center"
         android:textColor="@color/navy"
         android:textSize="25sp"
@@ -50,12 +50,13 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <com.google.android.material.textfield.TextInputEditText
-
+            android:drawableLeft="@drawable/ic_user"
+            android:drawablePadding="10dp"
             style="@style/MyTextInputEditText"
             android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="username" />
+            android:hint="nama pengguna" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -73,12 +74,13 @@
         app:layout_constraintTop_toBottomOf="@+id/btnSolid">
 
         <com.google.android.material.textfield.TextInputEditText
-
-
+            android:drawableLeft="@drawable/ic_hanger"
+            android:drawablePadding="10dp"
             style="@style/MyTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="password"
+            android:hint="kata sandi"
+            android:inputType="textPassword"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,6 +141,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView24" />
 
     <dita.shafira.mate.component.BtnSolid
+        android:id="@+id/btnSolid6"
         android:layout_width="0dp"
         android:layout_height="42dp"
         android:layout_marginStart="32dp"
