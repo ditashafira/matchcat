@@ -12,14 +12,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.bumptech.glide.Glide;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,21 +24,14 @@ import dita.shafira.mate.Mating2Activity;
 import dita.shafira.mate.R;
 import dita.shafira.mate.model.Cat;
 
-public class MatingAdapter extends RecyclerView.Adapter<MatingAdapter.ViewHolder> {
-    private Context context;
+public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapter.ViewHolder> {
+    Context context;
     private ArrayList<Cat> cats;
 
-    public MatingAdapter(Context context) {
+    public MatingSearchAdapter(Context context) {
         this.context = context;
-        this.cats = new ArrayList<Cat>();
+        this.cats= new ArrayList<>();
     }
-
-    public void setCats(ArrayList<Cat> cats) {
-        this.cats.clear();
-        this.cats.addAll(cats);
-        notifyDataSetChanged();
-    }
-
     public static int calculateAge(String date) {
         LocalDate birthDate = LocalDate.parse(date);
         LocalDate currentDate = LocalDate.now();
@@ -55,15 +45,15 @@ public class MatingAdapter extends RecyclerView.Adapter<MatingAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_list_cat, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_list_cat_2,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.age.setText(calculateAge(cats.get(position).getBirth()) + "thn/" + cats.get(position).getRace().getTitle());
         holder.name.setText(cats.get(position).getName());
         holder.sex.setText("Auto laki");
-        holder.age.setText(calculateAge(cats.get(position).getBirth()) + "thn/" + cats.get(position).getRace().getTitle());
         Glide.with(context)
                 .load(cats.get(position).getPhotos1())
                 .centerCrop()
@@ -74,7 +64,7 @@ public class MatingAdapter extends RecyclerView.Adapter<MatingAdapter.ViewHolder
 
                 Log.d("TAG", "onBindViewHolder: dikik");
                 Intent intent = new Intent(holder.itemView.getContext(), Mating2Activity.class);
-                intent.putExtra("cat_id", cats.get(position));
+                intent.putExtra("cat_id", cats.get(position).getId());
                 holder.itemView.getContext().startActivity(intent);
 
             }
@@ -86,6 +76,12 @@ public class MatingAdapter extends RecyclerView.Adapter<MatingAdapter.ViewHolder
         return cats.size();
     }
 
+    public void setCats(ArrayList<Cat> list) {
+        cats.clear();
+        cats.addAll(list);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.imageView)
         ImageView photo;
@@ -93,8 +89,12 @@ public class MatingAdapter extends RecyclerView.Adapter<MatingAdapter.ViewHolder
         TextView name;
         @BindView(R.id.textView15)
         TextView sex;
-        @BindView(R.id.textView16)
+        @BindView(R.id.textView30)
         TextView age;
+        @BindView(R.id.chat)
+        ImageView chat;
+        @BindView(R.id.like)
+        ImageView like;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

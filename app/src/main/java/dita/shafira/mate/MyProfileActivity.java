@@ -77,7 +77,7 @@ public class MyProfileActivity extends Fragment {
     }
     @OnClick(R.id.textView32)
     void settext(View text){
-        Intent intent = new Intent(getContext(),SettingActivity.class);
+        Intent intent = new Intent(getContext(),MyProfileActivity.class);
         startActivity(intent);
     }
 

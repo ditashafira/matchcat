@@ -14,5 +14,7 @@ public interface ApiService {
     Call<ResponseRace> getRace();
     @GET("cat/me/{user_id}")
     Call<List<Cat>> getMyCat(@Path("user_id") String user_id);
+    @GET("cat/me/{user_id}/{cat_id}")
+    Call<Cat> getMyCatDetail(@Path("user_id") String user_id,@Path("cat_id") String cat_id);
 
 }

@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/menu_layout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,23 +36,21 @@
         app:layout_constraintTop_toBottomOf="@+id/textView19"
         tools:ignore="MissingConstraints">
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/imageView16"
-            android:layout_width="80dp"
-            android:layout_height="100dp"
+            android:layout_width="95dp"
+            android:layout_height="125dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/salem"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="10dp" />
 
         <TextView
             android:id="@+id/textView20"
             android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:text="Nama Kucing"
             android:textColor="@color/salem"
             android:textSize="18sp"
@@ -181,11 +179,11 @@
 
         <TextView
             android:id="@+id/textView29"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_marginEnd="16dp"
-            android:text="50 km"
-            android:textAlignment="center"
+            android:text="530 km"
+            android:textAlignment="textEnd"
             android:textColor="@color/salem"
             app:layout_constraintBottom_toBottomOf="@+id/textView26"
             app:layout_constraintEnd_toEndOf="parent"
