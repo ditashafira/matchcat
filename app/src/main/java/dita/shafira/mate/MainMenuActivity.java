@@ -25,6 +25,8 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
         ButterKnife.bind(this);
 
+
+
         CbnMenuItem notification = new CbnMenuItem(R.drawable.ic_profile, R.drawable.avd_profile, R.id.navigation_profile);
         CbnMenuItem notification1 = new CbnMenuItem(R.drawable.ic_pawprint, R.drawable.avd_pawprint, R.id.navigation_dashboard);
 

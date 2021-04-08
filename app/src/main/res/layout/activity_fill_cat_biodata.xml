@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_android_mobile___1"
+    android:background="@color/soft_guava"
     tools:context=".MainActivity">
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:text="Biodata Kucing"
         android:textAlignment="textStart"
@@ -24,19 +24,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/roundedImageView"
+        android:layout_width="145dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/salem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:riv_corner_radius="15dp" />
+
+
+    <ImageView
+
+        android:id="@+id/imageView19"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:src="@drawable/add_button"
+        app:layout_constraintBottom_toBottomOf="@+id/roundedImageView"
+        app:layout_constraintEnd_toEndOf="@+id/roundedImageView"
+        app:layout_constraintStart_toEndOf="@+id/roundedImageView"
+        app:layout_constraintTop_toBottomOf="@+id/roundedImageView" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/menu_layout"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.128"
+        app:layout_constraintTop_toBottomOf="@+id/imageView19"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -77,9 +101,9 @@
                 style="@style/MyTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_message"
+                android:drawableLeft="@drawable/ic_add_event"
                 android:drawablePadding="10dp"
-                android:hint="Email "
+                android:hint="Usia"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,56 +117,11 @@
             app:layout_constraintStart_toStartOf="@+id/btnSolid"
             app:layout_constraintTop_toBottomOf="@+id/btnSolid2">
 
-            <com.google.android.material.textfield.TextInputEditText
-                style="@style/MyTextInputEditText"
+            <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_location"
-                android:drawablePadding="10dp"
-                android:hint="Alamat"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/btnSolid4"
-            style="@style/MyTextInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/btnSolid2"
-            app:layout_constraintStart_toStartOf="@+id/btnSolid3"
-            app:layout_constraintTop_toBottomOf="@+id/btnSolid3">
-
-            <com.google.android.material.textfield.TextInputEditText
-                style="@style/MyTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_hanger"
-                android:drawablePadding="10dp"
-                android:hint="Kata Sandi"
-                android:inputType="textPassword"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/btnSolid5"
-            style="@style/MyTextInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/btnSolid3"
-            app:layout_constraintStart_toStartOf="@+id/btnSolid4"
-            app:layout_constraintTop_toBottomOf="@+id/btnSolid4">
-
-            <com.google.android.material.textfield.TextInputEditText
-                style="@style/MyTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_secure_shield"
-                android:drawablePadding="10dp"
-                android:hint="Ulangi Kata Sandi"
-                android:inputType="textPassword"
-                android:singleLine="true" />
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <dita.shafira.mate.component.BtnSolid
@@ -150,13 +129,13 @@
             android:layout_height="42dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="24dp"
-            android:text="Daftar"
+            android:text="Tambah Kucing"
             android:textColor="@color/soft_guava"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btnSolid4"
-            app:layout_constraintStart_toStartOf="@+id/btnSolid5"
-            app:layout_constraintTop_toBottomOf="@+id/btnSolid5" />
+            app:layout_constraintEnd_toEndOf="@+id/btnSolid2"
+            app:layout_constraintStart_toStartOf="@+id/btnSolid3"
+            app:layout_constraintTop_toBottomOf="@+id/btnSolid3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

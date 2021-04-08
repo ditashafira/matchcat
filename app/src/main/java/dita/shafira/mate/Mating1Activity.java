@@ -67,7 +67,8 @@ public class Mating1Activity extends AppCompatActivity {
 
     @OnClick(R.id.imageView15)
     void setBtnSolid(View solid){
-        Intent intent = new Intent(this,DashboardActivity.class);
+        Intent intent = new Intent(this,MainMenuActivity.class);
+        intent.putExtra("key",1);
         startActivity(intent);
     }
 }

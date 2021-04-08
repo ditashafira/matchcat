@@ -29,7 +29,8 @@ public class ListCatActivity extends AppCompatActivity {
 
     @OnClick(R.id.imageView11)
     void setText(View text){
-        Intent intent = new Intent(this,DashboardActivity.class);
+        Intent intent = new Intent(this,MainMenuActivity.class);
+        intent.putExtra("key",1);
         startActivity(intent);
     }
 

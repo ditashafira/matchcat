@@ -14,18 +14,21 @@
         tools:context=".MainActivity">
 
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/imageView4"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="250dp"
-            android:background="@color/salem"
+            android:layout_marginTop="200dp"
+            android:src="@color/salem"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:riv_corner_radius="15dp"
+            app:riv_corner_radius_top_left="15dp"
+            app:riv_corner_radius_top_right="15dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"

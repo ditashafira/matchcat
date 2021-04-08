@@ -22,12 +22,12 @@ public SettingActivity(){
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
     }
-    @OnClick(R.id.constraintLayout2)
+    @OnClick(R.id.imageView15)
     void setView(View solid){
-        Intent intent = new Intent(getBaseContext(),EditProfileActivity.class);
+        Intent intent = new Intent(getBaseContext(),MainMenuActivity.class);
         startActivity(intent);
     }
-    @OnClick(R.id.imageView15)
+    @OnClick(R.id.textView28)
     void setView2(View solid){
         Intent intent = new Intent(getBaseContext(),EditProfileActivity.class);
         startActivity(intent);
