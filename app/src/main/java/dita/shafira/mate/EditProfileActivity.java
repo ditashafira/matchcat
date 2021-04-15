@@ -93,4 +93,9 @@ public class EditProfileActivity extends AppCompatActivity {
         return inSampleSize;
     }
 
+    @OnClick(R.id.imageView15)
+    void setBtnSolid2(View solid){
+        Intent intent = new Intent(getBaseContext(),SettingActivity.class);
+        startActivity(intent);
+    }
 }

@@ -101,4 +101,10 @@ public class MyProfileActivity extends Fragment {
         startActivity(intent);
     }
 
+    @OnClick(R.id.textView33)
+    void settexkjkt(View text){
+        Intent intent = new Intent(getContext(),HistoryMatingActivity.class);
+        startActivity(intent);
+    }
+
 }
