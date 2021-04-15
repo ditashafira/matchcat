@@ -3,6 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
+        android:name=".database.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -26,6 +27,7 @@
         <activity android:name=".Mating2Activity"/>
         <activity android:name=".Mating3Activity"/>
         <activity android:name=".Mating4Activity"/>
+        <activity android:name=".HistoryMatingActivity"/>
         <activity android:name=".Mating5Activity"/>
         <activity android:name=".SettingActivity"/>
         <activity android:name=".FillCatBiodata"/>

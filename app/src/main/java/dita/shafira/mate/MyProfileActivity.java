@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dita.shafira.mate.adapter.MatingAdapter;
 import dita.shafira.mate.adapter.MyProfileCat;
+import dita.shafira.mate.database.MyApp;
 import dita.shafira.mate.model.Cat;
 import dita.shafira.mate.service.Service;
 import retrofit2.Call;
@@ -31,6 +33,20 @@ import retrofit2.Response;
 
 public class MyProfileActivity extends Fragment {
 
+    @BindView(R.id.profile_image)
+    ImageView photo;
+    @BindView(R.id.textView6)
+    TextView username;
+    @BindView(R.id.textView8)
+    TextView location;
+    @BindView(R.id.textView12)
+    TextView mycat;
+   @BindView(R.id.textView14)
+    TextView targetcat;
+    @BindView(R.id.textView11)
+    TextView usernamebottom;
+    @BindView(R.id.textView31)
+    TextView email;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     MyProfileCat adapter;
@@ -53,6 +69,10 @@ public class MyProfileActivity extends Fragment {
         View view =inflater.inflate(R.layout.activity_myprofile, container, false);
         ButterKnife.bind(this,view);
         context=getContext();
+//        username.setText(MyApp.db.userDao().user().get(0).getName());
+//        email.setText(MyApp.db.userDao().user().get(0).getEmail());
+//        usernamebottom.setText(MyApp.db.userDao().user().get(0).getName());
+
         recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
         Call<List<Cat>> call = Service.getInstance().getApi().getMyCat("1");
         call.enqueue(new Callback<List<Cat>>() {

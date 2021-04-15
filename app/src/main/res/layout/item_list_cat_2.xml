@@ -78,22 +78,22 @@
 
         <ImageView
             android:id="@+id/like"
-            android:layout_width="0dp"
-            android:layout_height="25dp"
+            android:layout_width="30dp"
+            android:layout_height="27dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/like_logo"
+            android:src="@drawable/love_button_2"
             app:layout_constraintBottom_toBottomOf="@+id/imageView10"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
         <ImageView
             android:id="@+id/chat"
-            android:layout_width="0dp"
-            android:layout_height="24dp"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/chat_logo"
+            android:src="@drawable/massage_button_12"
             app:layout_constraintBottom_toBottomOf="@+id/imageView10"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/textView30" />

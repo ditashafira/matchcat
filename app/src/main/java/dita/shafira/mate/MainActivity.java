@@ -9,10 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dita.shafira.mate.component.BtnSolid;
+import dita.shafira.mate.database.MyApp;
+import dita.shafira.mate.model.User;
 
 import static dita.shafira.mate.R.id.btnLightSolid;
 
@@ -24,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        List<User> user=MyApp.db.userDao().user();
+        if (user.size() !=0){
+            Intent intent = new Intent(getBaseContext(), MainMenuActivity.class);
+            startActivity(intent);
+        }
 
 
     }

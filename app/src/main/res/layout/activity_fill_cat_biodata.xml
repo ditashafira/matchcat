@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="Biodata Kucing"
         android:textAlignment="textStart"
@@ -31,7 +31,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:background="@color/salem"
+        android:src="@color/salem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_add_event"
                 android:drawablePadding="10dp"
-                android:hint="Usia"
+                android:hint="Tanggal Lahir"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,14 +127,16 @@
         <dita.shafira.mate.component.BtnSolid
             android:layout_width="0dp"
             android:layout_height="42dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
             android:text="Tambah Kucing"
             android:textColor="@color/soft_guava"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btnSolid2"
-            app:layout_constraintStart_toStartOf="@+id/btnSolid3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSolid3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

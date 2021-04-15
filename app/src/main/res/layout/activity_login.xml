@@ -50,13 +50,14 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
             android:drawableLeft="@drawable/ic_user"
             android:drawablePadding="10dp"
             style="@style/MyTextInputEditText"
             android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="nama pengguna" />
+            android:hint="Email" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -74,12 +75,13 @@
         app:layout_constraintTop_toBottomOf="@+id/btnSolid">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
             android:drawableLeft="@drawable/ic_hanger"
             android:drawablePadding="10dp"
             style="@style/MyTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="kata sandi"
+            android:hint="Kata Sandi"
             android:inputType="textPassword"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
