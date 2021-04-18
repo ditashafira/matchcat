@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Service {
-    private static final String BASE_URL="http://192.168.43.159/catemate/public/api/";
+    private static final String BASE_URL="http://catmate.imajisociopreneur.id/api/";
     private static Service instance;
     private Retrofit retrofit;
 

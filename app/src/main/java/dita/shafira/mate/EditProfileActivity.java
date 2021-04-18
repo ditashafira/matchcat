@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,9 +22,19 @@ import java.io.InputStream;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dita.shafira.mate.database.MyApp;
+import dita.shafira.mate.model.User;
 
 public class EditProfileActivity extends AppCompatActivity {
 
+    @BindView(R.id.username)
+    EditText username;
+    @BindView(R.id.email)
+    EditText email;
+    @BindView(R.id.location)
+    EditText location;
+    @BindView(R.id.password)
+    EditText password;
     @BindView(R.id.profile_image)
     ImageView photo;
     @BindView(R.id.add_photo)
@@ -35,6 +46,11 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         ButterKnife.bind(this);
+        User user= MyApp.db.userDao().user().get(0);
+        username.setText(user.getName());
+        email.setText(user.getEmail());
+        location.setText(user.getAddress());
+
     }
     @OnClick(R.id.add_photo)
     void setBtnSolid(View solid){
@@ -94,8 +110,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.imageView15)
-    void setBtnSolid2(View solid){
-        Intent intent = new Intent(getBaseContext(),SettingActivity.class);
-        startActivity(intent);
+    void setText(View text){
+        super.onBackPressed();
     }
 }

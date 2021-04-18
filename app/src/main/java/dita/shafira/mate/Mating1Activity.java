@@ -47,7 +47,6 @@ public class Mating1Activity extends AppCompatActivity {
         call.enqueue(new Callback<List<Cat>>() {
             @Override
             public void onResponse(Call<List<Cat>> call, Response<List<Cat>> response) {
-                Log.d("TAG", "onResponse: "+response.body().get(0).getName());
                 list= (ArrayList<Cat>) response.body();
                 adapter=new MatingAdapter(context);
                 adapter.setCats(list);
@@ -58,8 +57,6 @@ public class Mating1Activity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Cat>> call, Throwable t) {
                 Toast.makeText(getBaseContext(),t.getMessage(),Toast.LENGTH_LONG).show();
-                Log.d("TAG", "onFailure: "+t.getMessage());
-                Log.d("TAG", "onFailureaadasd: "+call.request().body());
             }
         });
 
@@ -67,8 +64,6 @@ public class Mating1Activity extends AppCompatActivity {
 
     @OnClick(R.id.imageView15)
     void setBtnSolid(View solid){
-        Intent intent = new Intent(this,MainMenuActivity.class);
-        intent.putExtra("key",1);
-        startActivity(intent);
+        super.onBackPressed();
     }
 }

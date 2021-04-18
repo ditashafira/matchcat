@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="Kucing Saya"
+        android:fontFamily="@font/mmedium"
         android:textColor="@color/navy"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -137,6 +138,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/mmedium"
         android:text="Nama Kucing"
         android:textAlignment="textStart"
         android:textColor="@color/navy"
@@ -146,38 +148,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <ImageView
-        android:id="@+id/imageView22"
-        android:layout_width="30dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:background="#FFFFFF"
-        android:src="@drawable/location_cat"
-        app:layout_constraintStart_toStartOf="@+id/text_1"
-        app:layout_constraintTop_toBottomOf="@+id/text_1" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView22"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="#FFFFFF"-->
+<!--        android:src="@drawable/location_cat"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/text_1"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/text_1" />-->
 
-    <TextView
-        android:id="@+id/text_2"
-        android:layout_width="0dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:text="Lokasi"
-        android:textAlignment="textStart"
-        android:textColor="@color/navy"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView22"
-        app:layout_constraintEnd_toEndOf="@+id/text_1"
-        app:layout_constraintStart_toEndOf="@+id/imageView22"
-        app:layout_constraintTop_toTopOf="@+id/imageView22" />
+<!--    <TextView-->
+<!--        android:id="@+id/text_2"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:text="Lokasi"-->
+<!--        android:textAlignment="textStart"-->
+<!--        android:textColor="@color/navy"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/imageView22"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/text_1"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/imageView22"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/imageView22" />-->
 
     <ImageView
         android:id="@+id/imageView23"
         android:layout_width="30dp"
         android:layout_height="25dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/ic_pawprint"
-        app:layout_constraintStart_toStartOf="@+id/imageView22"
-        app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+        app:layout_constraintStart_toStartOf="@+id/text_1"
+        app:layout_constraintTop_toBottomOf="@+id/text_1" />
 
     <TextView
         android:id="@+id/text_3"
@@ -185,6 +188,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:text="Umur(thn)/Ras"
+        android:fontFamily="@font/mlight"
         android:textAlignment="textStart"
         android:textColor="@color/navy"
         android:textSize="18sp"
@@ -207,6 +211,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:text="Kelamin"
+        android:fontFamily="@font/mlight"
         android:textAlignment="textStart"
         android:textColor="@color/navy"
         android:textSize="18sp"
@@ -243,6 +248,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/mmedium"
         android:text="Vaksin"
         android:textAlignment="textStart"
         android:textColor="@color/navy"
@@ -266,6 +272,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:text="11-11-2020"
+        android:fontFamily="@font/mlight"
         android:textAlignment="textStart"
         android:textColor="@color/navy"
         android:textSize="18sp"
@@ -293,6 +300,7 @@
         android:layout_marginTop="8dp"
         android:text="Suntik Anti Parasit"
         android:textAlignment="textStart"
+        android:fontFamily="@font/mmedium"
         android:textColor="@color/navy"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -315,6 +323,7 @@
         android:layout_marginStart="8dp"
         android:text="11-11-2020"
         android:textAlignment="textStart"
+        android:fontFamily="@font/mlight"
         android:textColor="@color/navy"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView21"
@@ -345,6 +354,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ubah"
+            android:fontFamily="@font/mmedium"
             android:textColor="@color/navy"
             android:textSize="18sp" />
     </LinearLayout>
@@ -370,6 +380,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/mmedium"
             android:text="Hapus"
             android:textColor="@color/navy"
             android:textSize="18sp" />
@@ -381,6 +392,8 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/mmedium"
+        android:textSize="18sp"
         android:text="Kucing Disukai"
         android:textColor="@color/navy"
         app:layout_constraintBottom_toBottomOf="parent"

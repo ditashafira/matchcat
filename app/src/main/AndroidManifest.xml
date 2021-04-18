@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.Mate">
+        <meta-data android:name="android.max_aspect" android:value="2.1"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +33,7 @@
         <activity android:name=".SettingActivity"/>
         <activity android:name=".FillCatBiodata"/>
         <activity android:name=".WishListActivity"/>
+        <activity android:name=".ForgetPasswordActivity"/>
     </application>
 
 </manifest>

@@ -4,4 +4,18 @@
     <string name="register"><u>daftar</u></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="race_title">
+        <item>Persia</item>
+        <item>Angora</item>
+        <item>Scottish Fold</item>
+        <item>American Short Hair</item>
+        <item>American Short Hair</item>
+    </string-array>
+
+    <string-array name="race_id">
+        <item>Persia</item>
+        <item>Angora</item>
+        <item>Scottish Fold</item>
+        <item>American Short Hair</item>
+    </string-array>
 </resources>

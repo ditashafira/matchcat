@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="Hasil Pencarian"
+        android:fontFamily="@font/mmedium"
         android:textColor="@color/navy"
         android:textSize="25sp"
         android:textStyle="bold"

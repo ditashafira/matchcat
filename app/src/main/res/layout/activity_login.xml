@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Masuk"
+        android:fontFamily="@font/mmedium"
         android:textAlignment="center"
         android:textColor="@color/navy"
         android:textSize="25sp"
@@ -55,6 +56,7 @@
             android:drawablePadding="10dp"
             style="@style/MyTextInputEditText"
             android:singleLine="true"
+            android:fontFamily="@font/mlight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email" />
@@ -81,6 +83,7 @@
             style="@style/MyTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/mlight"
             android:hint="Kata Sandi"
             android:inputType="textPassword"
             android:singleLine="true" />
@@ -118,29 +121,19 @@
 <!--        app:layout_constraintTop_toBottomOf="@+id/btnSolid"-->
 <!--        app:layout_constraintVertical_bias="0.053" />-->
 
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Belum punya akun ?"
-        android:textColor="@color/gray"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/btnSolid2"
-        app:layout_constraintTop_toBottomOf="@+id/btnSolid2" />
 
     <TextView
-        android:id="@+id/register"
+        android:id="@+id/forget_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@string/register"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mmedium"
+        android:text="Lupa Kata Sandi?"
         android:textColor="@color/navy"
         android:textSize="15sp"
-
-        app:layout_constraintBottom_toBottomOf="@+id/textView24"
-        app:layout_constraintStart_toEndOf="@+id/textView24"
-        app:layout_constraintTop_toTopOf="@+id/textView24" />
+        app:layout_constraintStart_toStartOf="@+id/btnSolid2"
+        app:layout_constraintTop_toBottomOf="@+id/btnSolid2" />
 
     <dita.shafira.mate.component.BtnSolid
         android:id="@+id/btnSolid6"
@@ -149,6 +142,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:text="Login"
+        android:fontFamily="@font/mmedium"
         android:textColor="@color/soft_guava"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"

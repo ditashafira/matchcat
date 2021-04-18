@@ -26,6 +26,7 @@ import dita.shafira.mate.adapter.MatingAdapter;
 import dita.shafira.mate.adapter.MyProfileCat;
 import dita.shafira.mate.database.MyApp;
 import dita.shafira.mate.model.Cat;
+import dita.shafira.mate.model.User;
 import dita.shafira.mate.service.Service;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,10 +40,6 @@ public class MyProfileActivity extends Fragment {
     TextView username;
     @BindView(R.id.textView8)
     TextView location;
-    @BindView(R.id.textView12)
-    TextView mycat;
-   @BindView(R.id.textView14)
-    TextView targetcat;
     @BindView(R.id.textView11)
     TextView usernamebottom;
     @BindView(R.id.textView31)
@@ -69,16 +66,16 @@ public class MyProfileActivity extends Fragment {
         View view =inflater.inflate(R.layout.activity_myprofile, container, false);
         ButterKnife.bind(this,view);
         context=getContext();
-//        username.setText(MyApp.db.userDao().user().get(0).getName());
-//        email.setText(MyApp.db.userDao().user().get(0).getEmail());
-//        usernamebottom.setText(MyApp.db.userDao().user().get(0).getName());
+        User user=MyApp.db.userDao().user().get(0);
+        username.setText(user.getName());
+        email.setText(user.getEmail());
+        usernamebottom.setText(MyApp.db.userDao().user().get(0).getName());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
         Call<List<Cat>> call = Service.getInstance().getApi().getMyCat("1");
         call.enqueue(new Callback<List<Cat>>() {
             @Override
             public void onResponse(Call<List<Cat>> call, Response<List<Cat>> response) {
-                Log.d("TAG", "onResponse: "+response.body().get(0).getName());
                 list= (ArrayList<Cat>) response.body();
                 adapter=new MyProfileCat(context);
                 adapter.setCats(list);

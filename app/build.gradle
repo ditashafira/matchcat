@@ -40,7 +40,6 @@ apply plugin: "androidx.navigation.safeargs"
 dependencies {
     def room_version = "2.2.6"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-
     implementation 'pub.devrel:easypermissions:1.2.0'
     implementation 'com.vincent.filepicker:MultiTypeFilePicker:1.0.7'
     implementation "androidx.room:room-runtime:$room_version"

@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Mate" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/salem</item>
-        <item name="colorPrimaryVariant">@color/salem</item>
+        <item name="colorPrimary">@color/beige</item>
+        <item name="colorPrimaryVariant">@color/soft_gray</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -47,5 +47,9 @@
     </style>
     <style name="slider_red">
         <item name="colorPrimary">@color/salem</item>
+    </style>
+
+    <style name="customfontstyle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/lobster</item>
     </style>
 </resources>

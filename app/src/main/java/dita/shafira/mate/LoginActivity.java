@@ -43,28 +43,29 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnSolid6)
     void setBtnSolid(View solid) {
-//        Call<ResponseLogin> call = Service.getInstance().getApi().login(email.getText().toString(), password.getText().toString());
-//        call.enqueue(new Callback<ResponseLogin>() {
-//            @Override
-//            public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-//                if (response.code() == 200) {
-////                    Log.d("TAG", "onResponse: "+response.body().getStatus());
-//                    Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
-//                    if (response.body().getStatus().equals("success")) {
-//                        MyApp.db.userDao().nukeTable();
-//                        MyApp.db.userDao().login(response.body().getContent().getUser());
-//
+        Call<ResponseLogin> call = Service.getInstance().getApi().login(email.getText().toString(), password.getText().toString());
+        call.enqueue(new Callback<ResponseLogin>() {
+            @Override
+            public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                if (response.code() == 200) {
+//                    Log.d("TAG", "onResponse: "+response.body().getStatus());
+                    Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
+                    if (response.body().getStatus().equals("success")) {
+                        MyApp.db.userDao().nukeTable();
+                        MyApp.db.userDao().login(response.body().getContent().getUser());
+
                         Intent intent = new Intent(getBaseContext(), MainMenuActivity.class);
                         startActivity(intent);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseLogin> call, Throwable t) {
-//                Log.d("TAG", t.getMessage());
-//            }
-//        });
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                Log.d("TAG", t.getMessage());
+                Toast.makeText(getBaseContext(),t.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @OnClick(R.id.register)

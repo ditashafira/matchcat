@@ -18,7 +18,7 @@ public class ListCatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_cat);
-        ButterKnife.bind(this);
+ButterKnife.bind(this);
     }
 
     @OnClick(R.id.recyclerView)
@@ -29,14 +29,12 @@ public class ListCatActivity extends AppCompatActivity {
 
     @OnClick(R.id.imageView11)
     void setText(View text){
-        Intent intent = new Intent(this,MainMenuActivity.class);
-        intent.putExtra("key",1);
-        startActivity(intent);
+        super.onBackPressed();
     }
 
     @OnClick(R.id.btnoutline_4)
     void setBtnOutline(View outline){
-        Intent intent = new Intent(this,FillCatBiodata.class);
+        Intent intent = new Intent(getBaseContext(),FillCatBiodata.class);
         startActivity(intent);
     }
 }

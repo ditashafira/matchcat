@@ -7,7 +7,6 @@
     android:background="@drawable/backdrop_1"
     tools:context=".MainActivity">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
@@ -37,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="List Kucing"
+        android:fontFamily="@font/mmedium"
         android:textColor="@color/navy"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -64,6 +64,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:text="Tambah Kucing"
+        android:fontFamily="@font/mmedium"
         android:textStyle="bold"
         android:textColor="@color/soft_guava"
         android:textAlignment="center"

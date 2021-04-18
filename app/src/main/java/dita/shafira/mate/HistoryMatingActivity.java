@@ -21,8 +21,7 @@ public class HistoryMatingActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.imageView15)
-    void settext(View text) {
-        Intent intent = new Intent(this, MainMenuActivity.class);
-        startActivity(intent);
+    void setText(View text){
+        super.onBackPressed();
     }
 }

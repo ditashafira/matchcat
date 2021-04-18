@@ -14,6 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/mmedium"
         android:text="Biodata Kucing"
         android:textAlignment="textStart"
         android:textColor="@color/navy"
@@ -26,8 +27,8 @@
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/roundedImageView"
-        android:layout_width="145dp"
-        android:layout_height="150dp"
+        android:layout_width="135dp"
+        android:layout_height="140dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
@@ -43,6 +44,7 @@
         android:id="@+id/imageView19"
         android:layout_width="50dp"
         android:layout_height="30dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/add_button"
         app:layout_constraintBottom_toBottomOf="@+id/roundedImageView"
         app:layout_constraintEnd_toEndOf="@+id/roundedImageView"
@@ -83,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_user"
                 android:drawablePadding="10dp"
+                android:fontFamily="@font/mlight"
                 android:hint="Nama Kucing"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -103,6 +106,7 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_add_event"
                 android:drawablePadding="10dp"
+                android:fontFamily="@font/mlight"
                 android:hint="Tanggal Lahir"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -112,16 +116,19 @@
             style="@style/MyTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="@+id/btnSolid"
             app:layout_constraintStart_toStartOf="@+id/btnSolid"
             app:layout_constraintTop_toBottomOf="@+id/btnSolid2">
 
-            <AutoCompleteTextView
+            <Spinner
+                android:spinnerMode="dialog"
+                android:id="@+id/race"
+                android:popupBackground="@color/soft_guava"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
+                android:background="@drawable/spinner_outline"
+                 />
 
-                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <dita.shafira.mate.component.BtnSolid
@@ -131,6 +138,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
+            android:fontFamily="@font/mmedium"
             android:text="Tambah Kucing"
             android:textColor="@color/soft_guava"
             android:textSize="15sp"

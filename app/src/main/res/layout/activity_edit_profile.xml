@@ -11,7 +11,7 @@
         android:id="@+id/imageView5"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/salem"
+        android:background="@color/beige"
         app:layout_constraintBottom_toBottomOf="@+id/imageView15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,9 +31,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/mmedium"
         android:text="Ubah Profile"
         android:textAlignment="textStart"
-        android:textColor="@color/soft_guava"
+        android:textColor="@color/gray"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView15"
@@ -88,12 +89,13 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-
+                android:id="@+id/username"
                 style="@style/MyTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_user"
                 android:drawablePadding="10dp"
+                android:fontFamily="@font/mlight"
                 android:hint="Nama Pengguna"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -109,12 +111,14 @@
             app:layout_constraintTop_toBottomOf="@+id/btnSolid">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
                 style="@style/MyTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_message"
                 android:drawablePadding="10dp"
                 android:hint="Email "
+                android:fontFamily="@font/mlight"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,11 +133,13 @@
             app:layout_constraintTop_toBottomOf="@+id/btnSolid2">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/location"
                 style="@style/MyTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_location"
                 android:drawablePadding="10dp"
+                android:fontFamily="@font/mlight"
                 android:hint="Alamat"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -149,12 +155,14 @@
             app:layout_constraintTop_toBottomOf="@+id/btnSolid3">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
                 style="@style/MyTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_hanger"
                 android:drawableRight="@drawable/ic_visibility"
                 android:drawablePadding="10dp"
+                android:fontFamily="@font/mlight"
                 android:hint="Kata Sandi"
                 android:inputType="textPassword"
                 android:singleLine="true" />
@@ -168,6 +176,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginBottom="24dp"
             android:text="Simpan Profile"
+            android:fontFamily="@font/mmedium"
             android:textColor="@color/soft_guava"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"

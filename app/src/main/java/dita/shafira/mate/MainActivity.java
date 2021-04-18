@@ -2,8 +2,11 @@ package dita.shafira.mate;
 
 import androidx.activity.ComponentActivity;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,10 +21,12 @@ import dita.shafira.mate.component.BtnSolid;
 import dita.shafira.mate.database.MyApp;
 import dita.shafira.mate.model.User;
 
+import static androidx.core.content.res.ResourcesCompat.*;
 import static dita.shafira.mate.R.id.btnLightSolid;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<typeface> extends AppCompatActivity {
 //    BtnSolid btnSolid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
