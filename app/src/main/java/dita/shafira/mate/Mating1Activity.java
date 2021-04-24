@@ -20,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dita.shafira.mate.adapter.MatingAdapter;
+import dita.shafira.mate.database.MyApp;
 import dita.shafira.mate.model.Cat;
 import dita.shafira.mate.model.ResponseCat;
 import dita.shafira.mate.service.Service;
@@ -43,7 +44,7 @@ public class Mating1Activity extends AppCompatActivity {
         ButterKnife.bind(this);
         context=this;
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        Call<List<Cat>> call = Service.getInstance().getApi().getMyCat("1");
+        Call<List<Cat>> call = Service.getInstance().getApi().getMyCat(MyApp.db.userDao().user().get(0).getId());
         call.enqueue(new Callback<List<Cat>>() {
             @Override
             public void onResponse(Call<List<Cat>> call, Response<List<Cat>> response) {
@@ -62,7 +63,7 @@ public class Mating1Activity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.imageView15)
+    @OnClick(R.id.imageView11)
     void setBtnSolid(View solid){
         super.onBackPressed();
     }

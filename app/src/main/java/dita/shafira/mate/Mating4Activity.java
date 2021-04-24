@@ -20,8 +20,13 @@ public class Mating4Activity extends AppCompatActivity {
         setContentView(R.layout.activity_mating_4);
         ButterKnife.bind(this);
     }
+    @OnClick(R.id.btnOutline_3)
+    void settext(View text) {
+        Intent intent = new Intent(this, WishListActivity.class);
+        startActivity(intent);
+    }
 
-    @OnClick(R.id.imageView15)
+    @OnClick(R.id.imageView11)
     void setText(View text){
         super.onBackPressed();
     }

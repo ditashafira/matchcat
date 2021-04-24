@@ -31,26 +31,15 @@ public class Cat implements Parcelable {
 	@SerializedName("name")
 	private String name;
 
-	@SerializedName("photos_2")
-	private String photos2;
-
-	@SerializedName("photos_3")
-	private String photos3;
-
-	@SerializedName("photos_4")
-	private String photos4;
+	@SerializedName("photo")
+	private String photo;
 
 	@SerializedName("id")
 	private int id;
 
-	@SerializedName("photos_5")
-	private String photos5;
-
 	@SerializedName("status")
 	private int status;
 
-	@SerializedName("photos_1")
-	private String photos1;
 
 	public Race getRace(){
 		return race;
@@ -84,32 +73,18 @@ public class Cat implements Parcelable {
 		return name;
 	}
 
-	public String getPhotos2(){
-		return photos2;
-	}
-
-	public String getPhotos3(){
-		return photos3;
-	}
-
-	public String getPhotos4(){
-		return photos4;
-	}
 
 	public int getId(){
 		return id;
 	}
 
-	public String getPhotos5(){
-		return photos5;
-	}
 
 	public int getStatus(){
 		return status;
 	}
 
-	public String getPhotos1(){
-		return photos1;
+	public String getPhoto(){
+		return photo;
 	}
 
 	@Override
@@ -127,13 +102,11 @@ public class Cat implements Parcelable {
 		dest.writeString(this.updatedAt);
 		dest.writeInt(this.userId);
 		dest.writeString(this.name);
-		dest.writeString(this.photos2);
-		dest.writeString(this.photos3);
-		dest.writeString(this.photos4);
+
 		dest.writeInt(this.id);
-		dest.writeString(this.photos5);
+
 		dest.writeInt(this.status);
-		dest.writeString(this.photos1);
+		dest.writeString(this.photo);
 	}
 
 	public void readFromParcel(Parcel source) {
@@ -145,13 +118,9 @@ public class Cat implements Parcelable {
 		this.updatedAt = source.readString();
 		this.userId = source.readInt();
 		this.name = source.readString();
-		this.photos2 = source.readString();
-		this.photos3 = source.readString();
-		this.photos4 = source.readString();
 		this.id = source.readInt();
-		this.photos5 = source.readString();
 		this.status = source.readInt();
-		this.photos1 = source.readString();
+		this.photo = source.readString();
 	}
 
 	public Cat() {
@@ -166,13 +135,9 @@ public class Cat implements Parcelable {
 		this.updatedAt = in.readString();
 		this.userId = in.readInt();
 		this.name = in.readString();
-		this.photos2 = in.readString();
-		this.photos3 = in.readString();
-		this.photos4 = in.readString();
 		this.id = in.readInt();
-		this.photos5 = in.readString();
 		this.status = in.readInt();
-		this.photos1 = in.readString();
+		this.photo = in.readString();
 	}
 
 	public static final Parcelable.Creator<Cat> CREATOR = new Parcelable.Creator<Cat>() {

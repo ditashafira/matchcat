@@ -72,7 +72,7 @@ public class MyProfileActivity extends Fragment {
         usernamebottom.setText(MyApp.db.userDao().user().get(0).getName());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
-        Call<List<Cat>> call = Service.getInstance().getApi().getMyCat("1");
+        Call<List<Cat>> call = Service.getInstance().getApi().getMyCat(user.getId());
         call.enqueue(new Callback<List<Cat>>() {
             @Override
             public void onResponse(Call<List<Cat>> call, Response<List<Cat>> response) {

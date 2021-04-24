@@ -68,9 +68,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick(R.id.register)
+    @OnClick(R.id.forget_password)
     void settext(View text) {
-        Intent intent = new Intent(this, RegisterActivity.class);
+        Intent intent = new Intent(this, ForgetPasswordActivity.class);
         startActivity(intent);
     }
 }

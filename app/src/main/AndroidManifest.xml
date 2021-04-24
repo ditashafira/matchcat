@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dita.shafira.mate">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:name=".database.MyApp"
@@ -34,6 +35,7 @@
         <activity android:name=".FillCatBiodata"/>
         <activity android:name=".WishListActivity"/>
         <activity android:name=".ForgetPasswordActivity"/>
+        <activity android:name=".CompleteCatBiodataActivity"/>
     </application>
 
 </manifest>

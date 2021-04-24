@@ -24,7 +24,7 @@ public SettingActivity(){
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
     }
-    @OnClick(R.id.imageView15)
+    @OnClick(R.id.imageView11)
     void setView(View solid){
         Intent intent = new Intent(getBaseContext(),MainMenuActivity.class);
         startActivity(intent);

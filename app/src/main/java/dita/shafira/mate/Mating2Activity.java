@@ -31,6 +31,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static dita.shafira.mate.service.Service.BASE_URL;
+import static dita.shafira.mate.service.Service.BASE_URL_STORAGE;
+
 public class Mating2Activity extends AppCompatActivity {
     public static int calculateAge(String date) {
         LocalDate birthDate = LocalDate.parse(date);
@@ -67,7 +70,7 @@ public class Mating2Activity extends AppCompatActivity {
         sex.setText("auto laki");
         age.setText(calculateAge(cat.getBirth()) + "thn/" + cat.getRace().getTitle());
         Glide.with(this)
-                .load(cat.getPhotos1())
+                .load(BASE_URL_STORAGE+cat.getPhoto())
                 .centerCrop()
                 .into(photo);
 //        Toast.makeText(getBaseContext(), cat_id, Toast.LENGTH_LONG).show();
@@ -109,5 +112,9 @@ public class Mating2Activity extends AppCompatActivity {
         Intent intent = new Intent(this, Mating3Activity.class);
         Log.d("TAG", "setBtnLightSolid: ");
         startActivity(intent);
+    }
+    @OnClick(R.id.imageView11)
+    void setBtnSolid(View solid){
+        super.onBackPressed();
     }
 }

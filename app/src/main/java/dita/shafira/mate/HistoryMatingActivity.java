@@ -20,7 +20,7 @@ public class HistoryMatingActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.imageView15)
+    @OnClick(R.id.imageView11)
     void setText(View text){
         super.onBackPressed();
     }

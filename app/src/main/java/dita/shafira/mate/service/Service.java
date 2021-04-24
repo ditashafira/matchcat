@@ -4,7 +4,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Service {
-    private static final String BASE_URL="http://catmate.imajisociopreneur.id/api/";
+    public static final String BASE_URL_STORAGE="http://catmate.imajisociopreneur.id/storage/";
+    public static final String BASE_URL="http://catmate.imajisociopreneur.id/api/";
     private static Service instance;
     private Retrofit retrofit;
 

@@ -20,6 +20,9 @@ import butterknife.ButterKnife;
 import dita.shafira.mate.R;
 import dita.shafira.mate.model.Cat;
 
+import static dita.shafira.mate.service.Service.BASE_URL;
+import static dita.shafira.mate.service.Service.BASE_URL_STORAGE;
+
 public class MyProfileCat extends RecyclerView.Adapter<MyProfileCat.ViewHolder> {
     private Context context;
     private ArrayList<Cat> cats;
@@ -47,7 +50,7 @@ public class MyProfileCat extends RecyclerView.Adapter<MyProfileCat.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.name.setText(cats.get(position).getName());
         Glide.with(context)
-                .load(cats.get(position).getPhotos1())
+                .load(BASE_URL_STORAGE+cats.get(position).getPhoto())
                 .centerCrop()
                 .into(holder.photo);
     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import dita.shafira.mate.adapter.MatingAdapter;
 import dita.shafira.mate.adapter.MatingSearchAdapter;
 import dita.shafira.mate.model.Cat;
@@ -63,4 +65,10 @@ public class Mating3Activity extends AppCompatActivity {
 
         });
     }
+
+    @OnClick(R.id.imageView11)
+    void setBtnSolid(View solid){
+        super.onBackPressed();
+    }
+
 }

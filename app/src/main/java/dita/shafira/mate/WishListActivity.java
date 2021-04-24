@@ -2,11 +2,13 @@ package dita.shafira.mate;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class WishListActivity extends AppCompatActivity {
 
@@ -18,4 +20,9 @@ public class WishListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wish_list);
         ButterKnife.bind(this);
     }
+    @OnClick(R.id.imageView11)
+    void setText(View text){
+        super.onBackPressed();
+    }
+
 }

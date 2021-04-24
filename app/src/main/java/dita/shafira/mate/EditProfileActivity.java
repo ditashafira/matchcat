@@ -109,7 +109,7 @@ public class EditProfileActivity extends AppCompatActivity {
         return inSampleSize;
     }
 
-    @OnClick(R.id.imageView15)
+    @OnClick(R.id.imageView11)
     void setText(View text){
         super.onBackPressed();
     }

@@ -7,146 +7,239 @@
     android:background="@color/soft_guava"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/mmedium"
-        android:text="Biodata Kucing"
-        android:textAlignment="textStart"
-        android:textColor="@color/navy"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:background="@color/beige"
+        android:elevation="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@android:color/white" >
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="18dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambah Kucing"
+            android:fontFamily="@font/mmedium"
+            android:textSize="20sp"
+            android:textColor="@color/navy"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+            app:layout_constraintStart_toEndOf="@+id/imageView11"/>
+    </androidx.appcompat.widget.Toolbar>
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/toolbar"-->
+<!--        tools:ignore="MissingConstraints">-->
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/roundedImageView"
         android:layout_width="135dp"
         android:layout_height="140dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:src="@color/salem"
+        android:src="@drawable/image_cat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:riv_corner_radius="15dp" />
 
 
-    <ImageView
+        <ImageView
 
-        android:id="@+id/imageView19"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/add_button"
-        app:layout_constraintBottom_toBottomOf="@+id/roundedImageView"
-        app:layout_constraintEnd_toEndOf="@+id/roundedImageView"
-        app:layout_constraintStart_toEndOf="@+id/roundedImageView"
-        app:layout_constraintTop_toBottomOf="@+id/roundedImageView" />
+            android:id="@+id/imageView19"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/add_button"
+            app:layout_constraintBottom_toBottomOf="@+id/roundedImageView"
+            app:layout_constraintEnd_toEndOf="@+id/roundedImageView"
+            app:layout_constraintStart_toEndOf="@+id/roundedImageView"
+            app:layout_constraintTop_toBottomOf="@+id/roundedImageView" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/menu_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView19"
-        tools:ignore="MissingConstraints">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/btnSolid"
-            style="@style/MyTextInputLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/menu_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/imageView19"
+            tools:ignore="MissingConstraints">
 
-            <com.google.android.material.textfield.TextInputEditText
-
-                style="@style/MyTextInputEditText"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/btnSolid"
+                style="@style/MyTextInputLayout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_user"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/mlight"
-                android:hint="Nama Kucing"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/btnSolid2"
-            style="@style/MyTextInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/btnSolid"
-            app:layout_constraintStart_toStartOf="@+id/btnSolid"
-            app:layout_constraintTop_toBottomOf="@+id/btnSolid">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name"
+                    style="@style/MyTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_user"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/mlight"
+                    android:hint="Nama Kucing"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                style="@style/MyTextInputEditText"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/btnSolid2"
+                style="@style/MyTextInputLayout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_add_event"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/mlight"
-                android:hint="Tanggal Lahir"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/btnSolid"
+                app:layout_constraintStart_toStartOf="@+id/btnSolid"
+                app:layout_constraintTop_toBottomOf="@+id/btnSolid">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/btnSolid3"
-            style="@style/MyTextInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/btnSolid"
-            app:layout_constraintStart_toStartOf="@+id/btnSolid"
-            app:layout_constraintTop_toBottomOf="@+id/btnSolid2">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/birth"
+                    style="@style/MyTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:drawableLeft="@drawable/ic_add_event"
+                    android:drawablePadding="10dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/mlight"
+                    android:hint="Tanggal Lahir"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <Spinner
-                android:spinnerMode="dialog"
-                android:id="@+id/race"
-                android:popupBackground="@color/soft_guava"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@drawable/spinner_outline"
-                 />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/btnSolid3"
+                style="@style/MyTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Pilih Jenis Ras"
+                app:layout_constraintEnd_toEndOf="@+id/btnSolid"
+                app:layout_constraintStart_toStartOf="@+id/btnSolid"
+                app:layout_constraintTop_toBottomOf="@+id/btnSolid2">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <!--            <Spinner-->
+                <!--                android:spinnerMode="dialog"-->
+                <!--                android:id="@+id/race"-->
+                <!--                android:popupBackground="@color/soft_guava"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="60dp"-->
+                <!--                android:background="@drawable/spinner_outline"-->
+                <!--                 />-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/race"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableEnd="@drawable/ic_fi_rr_angle_small_down"
+                    android:fontFamily="@font/mlight"
+                    android:textColor="@color/salem"
+                    android:textColorHint="@color/white"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <dita.shafira.mate.component.BtnSolid
-            android:layout_width="0dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="24dp"
-            android:fontFamily="@font/mmedium"
-            android:text="Tambah Kucing"
-            android:textColor="@color/soft_guava"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSolid3" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/btnSolid5"
+                style="@style/MyTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Pilih Jenis Ras"
+                app:layout_constraintEnd_toEndOf="@+id/btnSolid"
+                app:layout_constraintStart_toStartOf="@+id/btnSolid"
+                app:layout_constraintTop_toBottomOf="@+id/btnSolid3">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Pilih Jenis Kelamin"
+                    android:textColor="@color/salem"
+                    android:textSize="15sp" />
+
+                <RadioGroup
+                    android:id="@+id/sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:outlineAmbientShadowColor="@color/salem"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSolid5"
+                    tools:layout_editor_absoluteX="4dp">
+
+                    <RadioButton
+                        android:id="@+id/radio1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_outline"
+                        android:buttonTint="@color/salem"
+                        android:checked="true"
+                        android:text="Jantan"
+                        android:textColor="@color/salem" />
+
+                    <RadioButton
+                        android:id="@+id/radio2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_outline"
+                        android:text="Betina"
+                        android:textColor="@color/salem" />
+                </RadioGroup>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <dita.shafira.mate.component.BtnSolid
+                android:id="@+id/create"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/mmedium"
+                android:text="Tambah Kucing"
+                android:textColor="@color/soft_guava"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnSolid5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

@@ -1,10 +1,12 @@
 package dita.shafira.mate;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ForgetPasswordActivity extends AppCompatActivity {
     @Override
@@ -12,5 +14,10 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
         ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.imageView15)
+    void imageview(View image){
+        super.onBackPressed();
     }
 }

@@ -27,6 +27,9 @@ import dita.shafira.mate.Mating2Activity;
 import dita.shafira.mate.R;
 import dita.shafira.mate.model.Cat;
 
+import static dita.shafira.mate.service.Service.BASE_URL;
+import static dita.shafira.mate.service.Service.BASE_URL_STORAGE;
+
 public class MatingAdapter extends RecyclerView.Adapter<MatingAdapter.ViewHolder> {
     private Context context;
     private ArrayList<Cat> cats;
@@ -65,7 +68,7 @@ public class MatingAdapter extends RecyclerView.Adapter<MatingAdapter.ViewHolder
         holder.sex.setText("Auto laki");
         holder.age.setText(calculateAge(cats.get(position).getBirth()) + "thn/" + cats.get(position).getRace().getTitle());
         Glide.with(context)
-                .load(cats.get(position).getPhotos1())
+                .load(BASE_URL_STORAGE+cats.get(position).getPhoto())
                 .centerCrop()
                 .into(holder.photo);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

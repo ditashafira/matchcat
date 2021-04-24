@@ -1,18 +1,25 @@
 package dita.shafira.mate.service;
 
+import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import dita.shafira.mate.model.Cat;
 import dita.shafira.mate.model.Race;
+import dita.shafira.mate.model.Response;
 import dita.shafira.mate.model.ResponseCat;
 import dita.shafira.mate.model.ResponseLogin;
 import dita.shafira.mate.model.ResponseRace;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 
 public interface ApiService {
@@ -38,5 +45,15 @@ public interface ApiService {
             @Field("password") String password);
 
 
+    @Multipart
+    @POST("cat")
+    Call<Response> addCat(
+            @Part("name") String name,
+            @Part("race_id") int race,
+            @Part("birth") String birth,
+            @Part("sex") int sex,
+            @Part("user_id") int user,
+            @Part MultipartBody.Part image
+    );
 
 }

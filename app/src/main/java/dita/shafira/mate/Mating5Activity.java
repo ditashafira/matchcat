@@ -21,7 +21,7 @@ public class Mating5Activity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.imageView15)
+    @OnClick(R.id.imageView11)
     void setText(View text){
         super.onBackPressed();
     }
