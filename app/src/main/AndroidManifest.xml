@@ -36,6 +36,7 @@
         <activity android:name=".WishListActivity"/>
         <activity android:name=".ForgetPasswordActivity"/>
         <activity android:name=".CompleteCatBiodataActivity"/>
+        <activity android:name=".EditCatActivity"/>
     </application>
 
 </manifest>

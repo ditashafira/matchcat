@@ -7,148 +7,147 @@ import com.google.gson.annotations.SerializedName;
 
 public class Cat implements Parcelable {
 
-	@SerializedName("race")
-	private Race race;
+    public static final Parcelable.Creator<Cat> CREATOR = new Parcelable.Creator<Cat>() {
+        @Override
+        public Cat createFromParcel(Parcel source) {
+            return new Cat(source);
+        }
 
-	@SerializedName("race_id")
-	private int raceId;
+        @Override
+        public Cat[] newArray(int size) {
+            return new Cat[size];
+        }
+    };
+    @SerializedName("race")
+    private Race race;
+    @SerializedName("sex")
+    private int sex;
+    @SerializedName("race_id")
+    private int raceId;
+    @SerializedName("birth")
+    private String birth;
+    @SerializedName("created_at")
+    private String createdAt;
+    @SerializedName("vaccine")
+    private int vaccine;
+    @SerializedName("updated_at")
+    private String updatedAt;
+    @SerializedName("user_id")
+    private int userId;
+    @SerializedName("name")
+    private String name;
+    @SerializedName("photo")
+    private String photo;
+    @SerializedName("id")
+    private int id;
+    @SerializedName("status")
+    private int status;
 
-	@SerializedName("birth")
-	private String birth;
+    public Cat() {
+    }
 
-	@SerializedName("created_at")
-	private String createdAt;
+    protected Cat(Parcel in) {
+        this.race = in.readParcelable(Race.class.getClassLoader());
+        this.raceId = in.readInt();
+        this.sex = in.readInt();
+        this.birth = in.readString();
+        this.createdAt = in.readString();
+        this.vaccine = in.readInt();
+        this.updatedAt = in.readString();
+        this.userId = in.readInt();
+        this.name = in.readString();
+        this.id = in.readInt();
+        this.status = in.readInt();
+        this.photo = in.readString();
+    }
 
-	@SerializedName("vaccine")
-	private int vaccine;
+    public Race getRace() {
+        return race;
+    }
 
-	@SerializedName("updated_at")
-	private String updatedAt;
+    public int getRaceId() {
+        return raceId;
+    }
 
-	@SerializedName("user_id")
-	private int userId;
+    public String getBirth() {
+        return birth;
+    }
 
-	@SerializedName("name")
-	private String name;
+    public String getCreatedAt() {
+        return createdAt;
+    }
 
-	@SerializedName("photo")
-	private String photo;
+    public int getVaccine() {
+        return vaccine;
+    }
 
-	@SerializedName("id")
-	private int id;
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
 
-	@SerializedName("status")
-	private int status;
+    public int getUserId() {
+        return userId;
+    }
 
+    public String getName() {
+        return name;
+    }
 
-	public Race getRace(){
-		return race;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public int getRaceId(){
-		return raceId;
-	}
+    public int getStatus() {
+        return status;
+    }
 
-	public String getBirth(){
-		return birth;
-	}
+    public String getPhoto() {
+        return photo;
+    }
 
-	public String getCreatedAt(){
-		return createdAt;
-	}
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-	public int getVaccine(){
-		return vaccine;
-	}
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.race, flags);
+        dest.writeInt(this.raceId);
+        dest.writeInt(this.sex);
+        dest.writeString(this.birth);
+        dest.writeString(this.createdAt);
+        dest.writeInt(this.vaccine);
+        dest.writeString(this.updatedAt);
+        dest.writeInt(this.userId);
+        dest.writeString(this.name);
 
-	public String getUpdatedAt(){
-		return updatedAt;
-	}
+        dest.writeInt(this.id);
 
-	public int getUserId(){
-		return userId;
-	}
+        dest.writeInt(this.status);
+        dest.writeString(this.photo);
+    }
 
-	public String getName(){
-		return name;
-	}
+    public void readFromParcel(Parcel source) {
+        this.race = source.readParcelable(Race.class.getClassLoader());
+        this.raceId = source.readInt();
+        this.sex = source.readInt();
+        this.birth = source.readString();
+        this.createdAt = source.readString();
+        this.vaccine = source.readInt();
+        this.updatedAt = source.readString();
+        this.userId = source.readInt();
+        this.name = source.readString();
+        this.id = source.readInt();
+        this.status = source.readInt();
+        this.photo = source.readString();
+    }
 
+    public int getSex() {
+        return sex;
+    }
 
-	public int getId(){
-		return id;
-	}
-
-
-	public int getStatus(){
-		return status;
-	}
-
-	public String getPhoto(){
-		return photo;
-	}
-
-	@Override
-	public int describeContents() {
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeParcelable(this.race, flags);
-		dest.writeInt(this.raceId);
-		dest.writeString(this.birth);
-		dest.writeString(this.createdAt);
-		dest.writeInt(this.vaccine);
-		dest.writeString(this.updatedAt);
-		dest.writeInt(this.userId);
-		dest.writeString(this.name);
-
-		dest.writeInt(this.id);
-
-		dest.writeInt(this.status);
-		dest.writeString(this.photo);
-	}
-
-	public void readFromParcel(Parcel source) {
-		this.race = source.readParcelable(Race.class.getClassLoader());
-		this.raceId = source.readInt();
-		this.birth = source.readString();
-		this.createdAt = source.readString();
-		this.vaccine = source.readInt();
-		this.updatedAt = source.readString();
-		this.userId = source.readInt();
-		this.name = source.readString();
-		this.id = source.readInt();
-		this.status = source.readInt();
-		this.photo = source.readString();
-	}
-
-	public Cat() {
-	}
-
-	protected Cat(Parcel in) {
-		this.race = in.readParcelable(Race.class.getClassLoader());
-		this.raceId = in.readInt();
-		this.birth = in.readString();
-		this.createdAt = in.readString();
-		this.vaccine = in.readInt();
-		this.updatedAt = in.readString();
-		this.userId = in.readInt();
-		this.name = in.readString();
-		this.id = in.readInt();
-		this.status = in.readInt();
-		this.photo = in.readString();
-	}
-
-	public static final Parcelable.Creator<Cat> CREATOR = new Parcelable.Creator<Cat>() {
-		@Override
-		public Cat createFromParcel(Parcel source) {
-			return new Cat(source);
-		}
-
-		@Override
-		public Cat[] newArray(int size) {
-			return new Cat[size];
-		}
-	};
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
 }

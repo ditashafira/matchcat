@@ -20,26 +20,34 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dita.shafira.mate.CompleteCatBiodataActivity;
 import dita.shafira.mate.Mating2Activity;
+import dita.shafira.mate.Mating4Activity;
 import dita.shafira.mate.R;
 import dita.shafira.mate.model.Cat;
 
-import static dita.shafira.mate.service.Service.BASE_URL;
 import static dita.shafira.mate.service.Service.BASE_URL_STORAGE;
 
-public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapter.ViewHolder> {
-    Context context;
+public class MyCatAdapter extends RecyclerView.Adapter<MyCatAdapter.ViewHolder> {
+    private Context context;
     private ArrayList<Cat> cats;
 
-    public MatingSearchAdapter(Context context) {
+    public MyCatAdapter(Context context) {
         this.context = context;
-        this.cats= new ArrayList<>();
+        this.cats = new ArrayList<Cat>();
     }
+
+    public void setCats(ArrayList<Cat> cats) {
+        this.cats.clear();
+        this.cats.addAll(cats);
+        notifyDataSetChanged();
+    }
+
     public static int calculateAge(String date) {
         LocalDate birthDate = LocalDate.parse(date);
         LocalDate currentDate = LocalDate.now();
         if ((birthDate != null) && (currentDate != null)) {
-            return Period.between(birthDate, currentDate).getYears();
+            return Period.between(birthDate, currentDate).getMonths();
         } else {
             return 0;
         }
@@ -48,15 +56,19 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_list_cat_2,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_list_cat, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.age.setText(calculateAge(cats.get(position).getBirth()) + "thn/" + cats.get(position).getRace().getTitle());
         holder.name.setText(cats.get(position).getName());
-        holder.sex.setText("Auto laki");
+        if (cats.get(position).getSex() == 1) {
+            holder.sex.setText("Jantan");
+        } else {
+            holder.sex.setText("Betina");
+        }
+        holder.age.setText(calculateAge(cats.get(position).getBirth()) + "thn/" + cats.get(position).getRace().getTitle());
         Glide.with(context)
                 .load(BASE_URL_STORAGE+cats.get(position).getPhoto())
                 .centerCrop()
@@ -64,9 +76,10 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), Mating2Activity.class);
-                intent.putExtra("cat_id", cats.get(position).getId());
+                Intent intent = new Intent(holder.itemView.getContext(), Mating4Activity.class);
+                intent.putExtra("cat_id", cats.get(position));
                 holder.itemView.getContext().startActivity(intent);
+
             }
         });
     }
@@ -76,12 +89,6 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
         return cats.size();
     }
 
-    public void setCats(ArrayList<Cat> list) {
-        cats.clear();
-        cats.addAll(list);
-        notifyDataSetChanged();
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.imageView)
         ImageView photo;
@@ -89,12 +96,8 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
         TextView name;
         @BindView(R.id.textView15)
         TextView sex;
-        @BindView(R.id.textView30)
+        @BindView(R.id.textView16)
         TextView age;
-        @BindView(R.id.chat)
-        ImageView chat;
-        @BindView(R.id.like)
-        ImageView like;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

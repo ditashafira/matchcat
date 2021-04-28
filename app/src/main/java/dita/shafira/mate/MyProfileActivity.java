@@ -86,8 +86,6 @@ public class MyProfileActivity extends Fragment {
             @Override
             public void onFailure(Call<List<Cat>> call, Throwable t) {
                 Toast.makeText(context,t.getMessage(),Toast.LENGTH_LONG).show();
-                Log.d("TAG", "onFailure: "+t.getMessage());
-                Log.d("TAG", "onFailureaadasd: "+call.request().body());
             }
         });
         return view;

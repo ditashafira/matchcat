@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,32 +16,15 @@ import com.google.android.material.slider.Slider;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import dita.shafira.mate.adapter.MatingAdapter;
 import dita.shafira.mate.model.Cat;
-import dita.shafira.mate.service.Service;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-import static dita.shafira.mate.service.Service.BASE_URL;
 import static dita.shafira.mate.service.Service.BASE_URL_STORAGE;
 
 public class Mating2Activity extends AppCompatActivity {
-    public static int calculateAge(String date) {
-        LocalDate birthDate = LocalDate.parse(date);
-        LocalDate currentDate = LocalDate.now();
-        if ((birthDate != null) && (currentDate != null)) {
-            return Period.between(birthDate, currentDate).getYears();
-        } else {
-            return 0;
-        }
-    }
     @BindView(R.id.seekBar)
     Slider seekBar;
     @BindView(R.id.imageView16)
@@ -59,6 +40,16 @@ public class Mating2Activity extends AppCompatActivity {
     @BindView(R.id.switch1)
     SwitchCompat switchCompat;
 
+    public static int calculateAge(String date) {
+        LocalDate birthDate = LocalDate.parse(date);
+        LocalDate currentDate = LocalDate.now();
+        if ((birthDate != null) && (currentDate != null)) {
+            return Period.between(birthDate, currentDate).getYears();
+        } else {
+            return 0;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,10 +58,14 @@ public class Mating2Activity extends AppCompatActivity {
 //        String cat_id = String.valueOf(getIntent().getExtras().getInt("cat_id"));
         Cat cat = getIntent().getExtras().getParcelable("cat_id");
         name.setText(cat.getName());
-        sex.setText("auto laki");
+        if (cat.getSex() == 1) {
+            sex.setText("Jantan");
+        } else {
+            sex.setText("Betina");
+        }
         age.setText(calculateAge(cat.getBirth()) + "thn/" + cat.getRace().getTitle());
         Glide.with(this)
-                .load(BASE_URL_STORAGE+cat.getPhoto())
+                .load(BASE_URL_STORAGE + cat.getPhoto())
                 .centerCrop()
                 .into(photo);
 //        Toast.makeText(getBaseContext(), cat_id, Toast.LENGTH_LONG).show();
@@ -113,8 +108,9 @@ public class Mating2Activity extends AppCompatActivity {
         Log.d("TAG", "setBtnLightSolid: ");
         startActivity(intent);
     }
+
     @OnClick(R.id.imageView11)
-    void setBtnSolid(View solid){
+    void setBtnSolid(View solid) {
         super.onBackPressed();
     }
 }

@@ -47,7 +47,7 @@
 <!--        app:layout_constraintTop_toBottomOf="@+id/toolbar"-->
 <!--        tools:ignore="MissingConstraints">-->
 
-    <com.makeramen.roundedimageview.RoundedImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/roundedImageView"
         android:layout_width="135dp"
         android:layout_height="140dp"
@@ -61,17 +61,14 @@
         app:riv_corner_radius="15dp" />
 
 
-        <ImageView
+    <ImageView
 
-            android:id="@+id/imageView19"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/add_button"
-            app:layout_constraintBottom_toBottomOf="@+id/roundedImageView"
-            app:layout_constraintEnd_toEndOf="@+id/roundedImageView"
-            app:layout_constraintStart_toEndOf="@+id/roundedImageView"
-            app:layout_constraintTop_toBottomOf="@+id/roundedImageView" />
+        android:id="@+id/imageView19"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:src="@drawable/add_button"
+        app:layout_constraintBottom_toBottomOf="@+id/roundedImageView"
+        app:layout_constraintEnd_toEndOf="@+id/roundedImageView" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"

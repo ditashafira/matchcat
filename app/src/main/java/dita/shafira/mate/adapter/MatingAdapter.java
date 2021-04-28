@@ -65,7 +65,11 @@ public class MatingAdapter extends RecyclerView.Adapter<MatingAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.name.setText(cats.get(position).getName());
-        holder.sex.setText("Auto laki");
+        if (cats.get(position).getSex() == 1) {
+            holder.sex.setText("Jantan");
+        } else {
+            holder.sex.setText("Betina");
+        }
         holder.age.setText(calculateAge(cats.get(position).getBirth()) + "thn/" + cats.get(position).getRace().getTitle());
         Glide.with(context)
                 .load(BASE_URL_STORAGE+cats.get(position).getPhoto())

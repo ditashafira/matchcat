@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backdrop_1"
+    tools:context=".MainActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/soft_guava"
-    tools:context=".CompleteCatBiodataActivity">
-    
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="wrap_content" android:layout_width="match_parent">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -31,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lengkapi Profile "
+            android:text="Ubah Kucing"
             android:fontFamily="@font/mmedium"
             android:textSize="20sp"
             android:textColor="@color/navy"
@@ -41,17 +45,38 @@
             app:layout_constraintStart_toEndOf="@+id/imageView11"/>
     </androidx.appcompat.widget.Toolbar>
 
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/photo_human"
+        app:civ_border_color="@color/gray"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <ImageView
+        android:id="@+id/add_photo"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+        app:layout_constraintEnd_toEndOf="@+id/profile_image" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/add_photo"
         tools:listitem="@layout/item_add_photo_cat" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,14 +84,39 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/menu_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView"
         tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/btnSolid"
+            style="@style/MyTextInputLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_user"
+            app:startIconTintMode="multiply">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username"
+                style="@style/MyTextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_user"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/mlight"
+                android:hint="Nama Kucing"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/btnSolid2"
@@ -76,10 +126,10 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/btnSolid">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/vaccine"
+                android:id="@+id/birth"
                 style="@style/MyTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,7 +140,7 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:fontFamily="@font/mlight"
-                android:hint="Tanggal Vaksin"
+                android:hint="Vaksin"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,14 +150,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSolid2">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/parasite"
+                android:id="@+id/parasit"
                 style="@style/MyTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,25 +166,27 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:fontFamily="@font/mlight"
-                android:hint="Tanggal Vaksin"
+                android:hint="Suntik Anti Parasit"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <dita.shafira.mate.component.BtnSolid
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/mmedium"
+            android:textAllCaps="false"
+            android:text="Simpan Profile"
+            android:textColor="@color/soft_guava"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSolid3" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <dita.shafira.mate.component.BtnSolid
-        android:id="@+id/btnSolid6"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/mmedium"
-        android:text="Send Instructions"
-        android:textAllCaps="false"
-        android:textColor="@color/soft_guava"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

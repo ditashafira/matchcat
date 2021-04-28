@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -20,7 +19,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,7 +32,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -75,8 +72,8 @@ public class FillCatBiodata extends AppCompatActivity {
     int sex_id;
     int user_id;
     int race_id;
-
-
+    File file;
+    Bitmap bitmap;
     private RadioButton radioButton;
 
     @OnClick(R.id.imageView19)
@@ -86,17 +83,13 @@ public class FillCatBiodata extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "select image"), 200);
     }
 
-    File file;
-
     private File createTempFile(Bitmap bitmap) {
         File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES)
                 , System.currentTimeMillis() + "_image.webp");
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
         bitmap.compress(Bitmap.CompressFormat.WEBP, 0, bos);
         byte[] bitmapdata = bos.toByteArray();
         //write the bytes in file
-
         try {
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(bitmapdata);
@@ -107,8 +100,6 @@ public class FillCatBiodata extends AppCompatActivity {
         }
         return file;
     }
-
-    Bitmap bitmap;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -159,39 +150,25 @@ public class FillCatBiodata extends AppCompatActivity {
         return inSampleSize;
     }
 
-    @NonNull
-    private RequestBody createPartFromString(String descriptionString) {
-        return RequestBody.create(
-                okhttp3.MultipartBody.FORM, descriptionString);
-    }
-
     public void uploadImage(Bitmap gambarbitmap) {
-        HashMap<String, RequestBody> map = new HashMap<>();
-        map.put("name", createPartFromString(name.getText().toString()));
-        map.put("race_id", createPartFromString(Integer.toString(race_id)));
-        map.put("birth", createPartFromString(birthday.getText().toString()));
-        map.put("sex", createPartFromString(Integer.toString(sex_id)));
-        map.put("user_id", createPartFromString(Integer.toString(user_id)));
-//convert gambar jadi File terlebih dahulu dengan memanggil createTempFile yang di atas tadi.
         File file = createTempFile(gambarbitmap);
         RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
         MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), reqFile);
-        Log.d("Dita testing", "uploadImage: "+name.getText().toString()+" "+ race_id+ birthday.getText().toString()+" "+ sex_id+" "+ user.getId());
         Call<dita.shafira.mate.model.Response> call =
                 Service.getInstance().getApi().
-                addCat(
-                        name.getText().toString(),
-                        race_id,
-                        birthday.getText().toString(),
-                        sex_id,
-                        Integer.parseInt(user.getId()),
-                        body
-                );
+                        addCat(
+                                name.getText().toString(),
+                                race_id,
+                                birthday.getText().toString(),
+                                sex_id,
+                                Integer.parseInt(user.getId()),
+                                body
+                        );
         call.enqueue(new Callback<dita.shafira.mate.model.Response>() {
             @Override
             public void onResponse(Call<dita.shafira.mate.model.Response> call, Response<dita.shafira.mate.model.Response> response) {
-                Intent intent = new Intent(getBaseContext(), Mating4Activity.class);
-                Toast.makeText(getBaseContext(), "asd", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getBaseContext(), CompleteCatBiodataActivity.class);
+                Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
 
@@ -292,7 +269,6 @@ public class FillCatBiodata extends AppCompatActivity {
         } else {
             sex_id = 2;
         }
-
         uploadImage(bitmap);
     }
 

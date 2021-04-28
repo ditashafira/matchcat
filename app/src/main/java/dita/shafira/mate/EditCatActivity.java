@@ -10,30 +10,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Mating4Activity extends AppCompatActivity {
+public class EditCatActivity extends AppCompatActivity {
 
     TextView register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mating_4);
+        setContentView(R.layout.activity_edit_cat);
         ButterKnife.bind(this);
     }
-    @OnClick(R.id.btnOutline_3)
-    void settext(View text) {
-        Intent intent = new Intent(this, WishListActivity.class);
-        startActivity(intent);
-    }
-
     @OnClick(R.id.imageView11)
     void setText(View text){
         super.onBackPressed();
     }
-
-    @OnClick(R.id.btnOutline_1)
-    void setbutton(View text) {
-        Intent intent = new Intent(this, EditCatActivity.class);
-        startActivity(intent);}
 
 }
