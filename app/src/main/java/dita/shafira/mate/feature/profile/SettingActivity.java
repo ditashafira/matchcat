@@ -3,6 +3,7 @@ package dita.shafira.mate.feature.profile;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,6 +68,7 @@ public class SettingActivity extends AppCompatActivity {
         alert.setPositiveButton("Sesuaikan", (dialog, which) -> {
             gpsTracker = new GpsTracker(SettingActivity.this);
             if (gpsTracker.canGetLocation()) {
+                Log.d("TAG", "setNavigation: "+String.valueOf(gpsTracker.getLatitude())+ String.valueOf(gpsTracker.getLongitude()));
                 Call<Response> call = Service.getInstance().getApi().updateLocation(MyApp.db.userDao().user().get(0).getId(), String.valueOf(gpsTracker.getLatitude()), String.valueOf(gpsTracker.getLongitude()));
                 call.enqueue(new Callback<Response>() {
                     @Override

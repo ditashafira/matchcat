@@ -126,7 +126,7 @@ public class GpsTracker extends Service implements LocationListener {
 
     public void stopUsingGPS(){
         if(locationManager != null){
-            locationManager.removeUpdates(imaji.sociopreneur.util.GpsTracker.this);
+            locationManager.removeUpdates(dita.shafira.mate.util.GpsTracker.this);
         }
     }
 

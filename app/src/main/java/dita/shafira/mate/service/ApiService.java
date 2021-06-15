@@ -33,6 +33,27 @@ public interface ApiService {
             @Field("password") String password);
 
     @FormUrlEncoded
+    @POST("update/profile")
+    Call<ResponseLogin> updateProfile(
+            @Field("id") String user_id,
+            @Field("name") String usernmae,
+            @Field("address") String location,
+            @Field("password") String password);
+
+    @Multipart
+    @POST("update/profile/photo")
+    Call<ResponseLogin> updateProfilePhoto(
+            @Part("id") String user_id,
+            @Part MultipartBody.Part image
+    );
+//    @Multipart
+//    @POST("cat/update/photo")
+//    Call<Response> catUpdatePhoto(
+//            @Part("cat_id") String catId,
+//            @Part MultipartBody.Part image
+//    );
+
+    @FormUrlEncoded
     @POST("check/login")
     Call<Response> checkLogin(@Field("token") String token);
 
