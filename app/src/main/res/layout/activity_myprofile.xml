@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="1000dp"
         android:background="@drawable/backdrop_1"
-        tools:context=".MainActivity">
+        tools:context=".feature.MainActivity">
 
 
         <com.makeramen.roundedimageview.RoundedImageView
@@ -298,5 +298,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13"
             tools:listitem="@layout/item_cat_profile" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+            app:layout_constraintStart_toStartOf="@+id/recyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 @Entity//table
 public class User{
 	@ColumnInfo//menandakan nama kolom
-	private String langitude;
+	private String latitude;
 	@ColumnInfo
 	private String address;
 	@ColumnInfo
@@ -29,8 +29,8 @@ public class User{
 	@ColumnInfo
 	private String longitude;
 
-	public User(String langitude, String address, String updatedAt, String name, String createdAt, String remember_token, String emailVerifiedAt, String id, String email, String longitude) {
-		this.langitude = langitude;
+	public User(String latitude, String address, String updatedAt, String name, String createdAt, String remember_token, String emailVerifiedAt, String id, String email, String longitude) {
+		this.latitude = latitude;
 		this.address = address;
 		this.updatedAt = updatedAt;
 		this.name = name;
@@ -50,8 +50,8 @@ public class User{
 		this.remember_token = remember_token;
 	}
 
-	public String getLangitude(){
-		return langitude;
+	public String getLatitude(){
+		return latitude;
 	}
 
 	public String getAddress(){

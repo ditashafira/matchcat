@@ -20,26 +20,5 @@
                 android:strokeWidth="1.5"/>
         </vector>
     </aapt:attr>
-    <target android:name="path1">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                android:propertyName="trimPathStart"
-                android:duration="600"
-                android:valueFrom="1"
-                android:valueTo="0"
-                android:valueType="floatType"
-                android:interpolator="@android:anim/linear_interpolator"/>
-        </aapt:attr>
-    </target>
-    <target android:name="path2">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                android:propertyName="trimPathEnd"
-                android:duration="600"
-                android:valueFrom="0"
-                android:valueTo="1"
-                android:valueType="floatType"
-                android:interpolator="@android:anim/linear_interpolator"/>
-        </aapt:attr>
-    </target>
+
 </animated-vector>

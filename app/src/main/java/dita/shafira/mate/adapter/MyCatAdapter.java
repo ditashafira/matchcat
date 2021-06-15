@@ -14,19 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import dita.shafira.mate.CompleteCatBiodataActivity;
-import dita.shafira.mate.Mating2Activity;
-import dita.shafira.mate.Mating4Activity;
+import dita.shafira.mate.feature.cat.mating.Mating4Activity;
 import dita.shafira.mate.R;
 import dita.shafira.mate.model.Cat;
 
 import static dita.shafira.mate.service.Service.BASE_URL_STORAGE;
+import static dita.shafira.mate.util.Helper.calculateAge;
 
 public class MyCatAdapter extends RecyclerView.Adapter<MyCatAdapter.ViewHolder> {
     private Context context;
@@ -41,16 +38,6 @@ public class MyCatAdapter extends RecyclerView.Adapter<MyCatAdapter.ViewHolder> 
         this.cats.clear();
         this.cats.addAll(cats);
         notifyDataSetChanged();
-    }
-
-    public static int calculateAge(String date) {
-        LocalDate birthDate = LocalDate.parse(date);
-        LocalDate currentDate = LocalDate.now();
-        if ((birthDate != null) && (currentDate != null)) {
-            return Period.between(birthDate, currentDate).getMonths();
-        } else {
-            return 0;
-        }
     }
 
     @NonNull
@@ -68,19 +55,17 @@ public class MyCatAdapter extends RecyclerView.Adapter<MyCatAdapter.ViewHolder> 
         } else {
             holder.sex.setText("Betina");
         }
-        holder.age.setText(calculateAge(cats.get(position).getBirth()) + "thn/" + cats.get(position).getRace().getTitle());
+        holder.age.setText(calculateAge(cats.get(position).getBirth()) + " / " + cats.get(position).getRace().getTitle());
         Glide.with(context)
                 .load(BASE_URL_STORAGE+cats.get(position).getPhoto())
                 .centerCrop()
                 .into(holder.photo);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), Mating4Activity.class);
-                intent.putExtra("cat_id", cats.get(position));
-                holder.itemView.getContext().startActivity(intent);
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.itemView.getContext(), Mating4Activity.class);
+            intent.putExtra("cat_id", cats.get(position).getId());
+            Log.d("TAGDi", "onBindViewHolder: "+cats.get(position).getId());
+            holder.itemView.getContext().startActivity(intent);
 
-            }
         });
     }
 

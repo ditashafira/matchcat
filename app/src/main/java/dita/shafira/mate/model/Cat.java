@@ -28,10 +28,14 @@ public class Cat implements Parcelable {
     private String birth;
     @SerializedName("created_at")
     private String createdAt;
-    @SerializedName("vaccine")
-    private int vaccine;
     @SerializedName("updated_at")
     private String updatedAt;
+    @SerializedName("vaccine")
+    private int vaccine;
+    @SerializedName("last_vaccine")
+    private String lastVaccine;
+    @SerializedName("last_parasite")
+    private String lastParasite;
     @SerializedName("user_id")
     private int userId;
     @SerializedName("name")
@@ -42,23 +46,19 @@ public class Cat implements Parcelable {
     private int id;
     @SerializedName("status")
     private int status;
+    @SerializedName("user")
+    private User user;
 
-    public Cat() {
+    public User getUser() {
+        return user;
     }
 
-    protected Cat(Parcel in) {
-        this.race = in.readParcelable(Race.class.getClassLoader());
-        this.raceId = in.readInt();
-        this.sex = in.readInt();
-        this.birth = in.readString();
-        this.createdAt = in.readString();
-        this.vaccine = in.readInt();
-        this.updatedAt = in.readString();
-        this.userId = in.readInt();
-        this.name = in.readString();
-        this.id = in.readInt();
-        this.status = in.readInt();
-        this.photo = in.readString();
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Cat(Parcel source) {
+        readFromParcel(source);
     }
 
     public Race getRace() {
@@ -116,14 +116,14 @@ public class Cat implements Parcelable {
         dest.writeInt(this.raceId);
         dest.writeInt(this.sex);
         dest.writeString(this.birth);
-        dest.writeString(this.createdAt);
         dest.writeInt(this.vaccine);
+        dest.writeString(this.createdAt);
         dest.writeString(this.updatedAt);
+        dest.writeString(this.lastVaccine);
+        dest.writeString(this.lastParasite);
         dest.writeInt(this.userId);
         dest.writeString(this.name);
-
         dest.writeInt(this.id);
-
         dest.writeInt(this.status);
         dest.writeString(this.photo);
     }
@@ -133,9 +133,11 @@ public class Cat implements Parcelable {
         this.raceId = source.readInt();
         this.sex = source.readInt();
         this.birth = source.readString();
-        this.createdAt = source.readString();
         this.vaccine = source.readInt();
+        this.createdAt = source.readString();
         this.updatedAt = source.readString();
+        this.lastVaccine = source.readString();
+        this.lastParasite = source.readString();
         this.userId = source.readInt();
         this.name = source.readString();
         this.id = source.readInt();
@@ -149,5 +151,21 @@ public class Cat implements Parcelable {
 
     public void setSex(int sex) {
         this.sex = sex;
+    }
+
+    public String getLastVaccine() {
+        return lastVaccine;
+    }
+
+    public void setLastVaccine(String lastVaccine) {
+        this.lastVaccine = lastVaccine;
+    }
+
+    public String getLastParasite() {
+        return lastParasite;
+    }
+
+    public void setLastParasite(String lastParasite) {
+        this.lastParasite = lastParasite;
     }
 }

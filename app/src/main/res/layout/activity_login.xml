@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_android_mobile___1"
-    tools:context=".MainActivity">
+    tools:context=".feature.MainActivity">
 
     <TextView
         android:id="@+id/textView5"
@@ -100,39 +100,6 @@
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
-<!--    <dita.shafira.mate.component.BtnOutline-->
-<!--        android:id="@+id/btnSolid"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="42dp"-->
-<!--        android:layout_marginStart="32dp"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        android:layout_marginEnd="32dp"-->
-<!--        android:layout_marginBottom="32dp"-->
-<!--        android:text="Username"-->
-<!--        android:textColor="@color/salem"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/btnOutline"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/imageView3" />-->
-
-<!--    <dita.shafira.mate.component.BtnOutline-->
-<!--        android:id="@+id/btnSolid2"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="42dp"-->
-<!--        android:layout_marginStart="32dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:layout_marginEnd="32dp"-->
-<!--        android:text="Password"-->
-<!--        android:textColor="@color/salem"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/imageView2"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/btnSolid"-->
-<!--        app:layout_constraintVertical_bias="0.053" />-->
-
-
     <TextView
         android:id="@+id/forget_password"
         android:layout_width="0dp"
@@ -161,5 +128,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSolid2" />
 
-
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

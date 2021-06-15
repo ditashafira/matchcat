@@ -2,7 +2,6 @@ package dita.shafira.mate.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,24 +14,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import dita.shafira.mate.Mating2Activity;
+import dita.shafira.mate.feature.cat.mating.Mating2Activity;
 import dita.shafira.mate.R;
 import dita.shafira.mate.model.Cat;
 
-import static dita.shafira.mate.service.Service.BASE_URL;
 import static dita.shafira.mate.service.Service.BASE_URL_STORAGE;
+import static dita.shafira.mate.util.Helper.calculateAge;
 
 public class MatingAdapter extends RecyclerView.Adapter<MatingAdapter.ViewHolder> {
     private Context context;
     private ArrayList<Cat> cats;
+    public static int catId;
 
     public MatingAdapter(Context context) {
         this.context = context;
@@ -45,15 +41,7 @@ public class MatingAdapter extends RecyclerView.Adapter<MatingAdapter.ViewHolder
         notifyDataSetChanged();
     }
 
-    public static int calculateAge(String date) {
-        LocalDate birthDate = LocalDate.parse(date);
-        LocalDate currentDate = LocalDate.now();
-        if ((birthDate != null) && (currentDate != null)) {
-            return Period.between(birthDate, currentDate).getYears();
-        } else {
-            return 0;
-        }
-    }
+
 
     @NonNull
     @Override
@@ -70,21 +58,17 @@ public class MatingAdapter extends RecyclerView.Adapter<MatingAdapter.ViewHolder
         } else {
             holder.sex.setText("Betina");
         }
-        holder.age.setText(calculateAge(cats.get(position).getBirth()) + "thn/" + cats.get(position).getRace().getTitle());
+        holder.age.setText(calculateAge(cats.get(position).getBirth()) + "/" + cats.get(position).getRace().getTitle());
         Glide.with(context)
                 .load(BASE_URL_STORAGE+cats.get(position).getPhoto())
                 .centerCrop()
                 .into(holder.photo);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.itemView.setOnClickListener(v -> {
+            catId=cats.get(position).getId();
+            Intent intent = new Intent(holder.itemView.getContext(), Mating2Activity.class);
+            intent.putExtra("cat_id", cats.get(position));
+            holder.itemView.getContext().startActivity(intent);
 
-                Log.d("TAG", "onBindViewHolder: dikik");
-                Intent intent = new Intent(holder.itemView.getContext(), Mating2Activity.class);
-                intent.putExtra("cat_id", cats.get(position));
-                holder.itemView.getContext().startActivity(intent);
-
-            }
         });
     }
 

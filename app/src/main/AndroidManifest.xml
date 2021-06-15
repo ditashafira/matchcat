@@ -1,42 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dita.shafira.mate">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="dita.shafira.mate">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".database.MyApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
         android:theme="@style/Theme.Mate">
-        <meta-data android:name="android.max_aspect" android:value="2.1"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".feature.chat.ChatActivity"></activity>
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".RegisterActivity"/>
-        <activity android:name=".MainMenuActivity"/>
-        <activity android:name=".EditProfileActivity"/>
-        <activity android:name=".ListCatActivity"/>
-        <activity android:name=".Mating1Activity"/>
-        <activity android:name=".Mating2Activity"/>
-        <activity android:name=".Mating3Activity"/>
-        <activity android:name=".Mating4Activity"/>
-        <activity android:name=".HistoryMatingActivity"/>
-        <activity android:name=".Mating5Activity"/>
-        <activity android:name=".SettingActivity"/>
-        <activity android:name=".FillCatBiodata"/>
-        <activity android:name=".WishListActivity"/>
-        <activity android:name=".ForgetPasswordActivity"/>
-        <activity android:name=".CompleteCatBiodataActivity"/>
-        <activity android:name=".EditCatActivity"/>
-    </application>
 
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <activity android:name=".feature.MainActivity" />
+        <activity android:name=".feature.LoginActivity" />
+        <activity android:name=".feature.RegisterActivity" />
+        <activity android:name=".feature.MainMenuActivity" />
+        <activity android:name=".feature.profile.EditProfileActivity" />
+        <activity android:name=".feature.cat.ListCatActivity" />
+        <activity android:name=".feature.cat.mating.Mating1Activity" />
+        <activity android:name=".feature.cat.mating.Mating2Activity" />
+        <activity android:name=".feature.cat.mating.Mating3Activity" />
+        <activity android:name=".feature.cat.mating.Mating4Activity" />
+        <activity android:name=".feature.cat.HistoryMatingActivity" />
+        <activity android:name=".feature.cat.mating.Mating5Activity" />
+        <activity android:name=".feature.profile.SettingActivity" />
+        <activity android:name=".feature.cat.FillCatBiodata" />
+        <activity android:name=".feature.cat.WishListActivity" />
+        <activity android:name=".feature.ForgetPasswordActivity" />
+        <activity android:name=".feature.cat.CompleteCatBiodataActivity" />
+        <activity android:name=".feature.cat.EditCatActivity" />
+    </application>
 </manifest>

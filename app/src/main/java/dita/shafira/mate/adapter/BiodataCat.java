@@ -1,8 +1,6 @@
 package dita.shafira.mate.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 
-import dita.shafira.mate.Mating2Activity;
 import dita.shafira.mate.R;
 import dita.shafira.mate.model.Cat;
 
@@ -35,15 +28,7 @@ public class BiodataCat extends RecyclerView.Adapter<BiodataCat.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    public static int calculateAge(String date) {
-        LocalDate birthDate = LocalDate.parse(date);
-        LocalDate currentDate = LocalDate.now();
-        if ((birthDate != null) && (currentDate != null)) {
-            return Period.between(birthDate, currentDate).getYears();
-        } else {
-            return 0;
-        }
-    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

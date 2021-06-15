@@ -1,192 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
 
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/backdrop_1"
-    tools:context=".MainActivity"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backdrop_1"
+    tools:context=".feature.MainActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_height="wrap_content" android:layout_width="match_parent">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/beige"
-        android:elevation="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="@android:color/white" >
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/beige"
+            android:elevation="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@android:color/white">
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="18dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/mmedium"
+                android:text="Ubah Kucing"
+                android:textColor="@color/navy"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+                app:layout_constraintStart_toEndOf="@+id/imageView11" />
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/mainPhoto"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/photo_human"
+            app:civ_border_color="@color/gray"
+            app:civ_border_width="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="18dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="3dp"
-            android:src="@drawable/ic_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/add_photo"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintBottom_toBottomOf="@+id/mainPhoto"
+            app:layout_constraintEnd_toEndOf="@+id/mainPhoto" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ubah Kucing"
-            android:fontFamily="@font/mmedium"
-            android:textSize="20sp"
-            android:textColor="@color/navy"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView11"
-            app:layout_constraintStart_toEndOf="@+id/imageView11"/>
-    </androidx.appcompat.widget.Toolbar>
-
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/photo_human"
-        app:civ_border_color="@color/gray"
-        app:civ_border_width="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <ImageView
-        android:id="@+id/add_photo"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_edit"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
-        app:layout_constraintEnd_toEndOf="@+id/profile_image" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_photo"
-        tools:listitem="@layout/item_add_photo_cat" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/menu_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        tools:ignore="MissingConstraints">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/btnSolid"
-            style="@style/MyTextInputLayout2"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:startIconDrawable="@drawable/ic_user"
-            app:startIconTintMode="multiply">
+            app:layout_constraintTop_toBottomOf="@+id/add_photo"
+            tools:listitem="@layout/item_add_photo_cat" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username"
-                style="@style/MyTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_user"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/mlight"
-                android:hint="Nama Kucing"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/btnSolid2"
-            style="@style/MyTextInputLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/menu_layout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSolid">
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+            tools:ignore="MissingConstraints">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/birth"
-                style="@style/MyTextInputEditText"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/btnSolid"
+                style="@style/MyTextInputLayout2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:drawableLeft="@drawable/ic_calendar"
-                android:drawablePadding="10dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:fontFamily="@font/mlight"
-                android:hint="Vaksin"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_user"
+                app:startIconTintMode="multiply">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/btnSolid3"
-            style="@style/MyTextInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSolid2">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/catname"
+                    style="@style/MyTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_user"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/mlight"
+                    android:hint="Nama Kucing"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/parasit"
-                style="@style/MyTextInputEditText"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/btnSolid2"
+                style="@style/MyTextInputLayout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:drawableLeft="@drawable/ic_vaccine"
-                android:drawablePadding="10dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:fontFamily="@font/mlight"
-                android:hint="Suntik Anti Parasit"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnSolid">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/catvaccine"
+                    style="@style/MyTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:drawableLeft="@drawable/ic_calendar"
+                    android:drawablePadding="10dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/mlight"
+                    android:hint="Vaksin"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/btnSolid3"
+                style="@style/MyTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnSolid2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/catparasite"
+                    style="@style/MyTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:drawableLeft="@drawable/ic_vaccine"
+                    android:drawablePadding="10dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/mlight"
+                    android:hint="Suntik Anti Parasit"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <dita.shafira.mate.component.BtnSolid
-            android:layout_width="0dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/mmedium"
-            android:textAllCaps="false"
-            android:text="Simpan Profile"
-            android:textColor="@color/soft_guava"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSolid3" />
+            <dita.shafira.mate.component.BtnSolid
+                android:id="@+id/btnSimpan"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/mmedium"
+                android:text="Simpan Profile"
+                android:textAllCaps="false"
+                android:textColor="@color/soft_guava"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnSolid3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
