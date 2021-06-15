@@ -40,6 +40,14 @@ public interface ApiService {
     @POST("check/login")
     Call<Response> logout(@Field("token") String token);
 
+    @FormUrlEncoded
+    @POST("update/location")
+    Call<Response> updateLocation(
+            @Field("id") String id,
+            @Field("latitude") String latitude,
+            @Field("longitude") String longitude
+    );
+
 
     @GET("cat/race")
     Call<List<Race>> catRace();
