@@ -1,142 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    android:clipToPadding="false"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/beige"
-        android:elevation="12dp">
-
-        <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="18dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="3dp"
-            android:src="@drawable/ic_back" />
-
-        <TextView
-            android:id="@+id/toolbarTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/mmedium"
-            android:text="Pesan"
-            android:textColor="@color/navy"
-            android:textSize="20sp" />
-    </androidx.appcompat.widget.Toolbar>
-
-<!--    <LinearLayout-->
-<!--        android:padding="5dp"-->
-<!--        android:orientation="vertical"-->
-<!--        android:background="@color/salem"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-<!--        <LinearLayout-->
-<!--            android:layout_margin="5dp"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-<!--            <Button-->
-<!--                android:id="@+id/btnBlokir"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:text="blokir"-->
-<!--                android:layout_marginHorizontal="5dp"-->
-<!--                android:background="@drawable/btn_solid"-->
-<!--                android:textAlignment="center"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <Button-->
-<!--                android:id="@+id/btnEndChat"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:text="Akhiri Chat"-->
-<!--                android:layout_marginHorizontal="5dp"-->
-<!--                android:background="@drawable/btn_solid"-->
-<!--                android:textAlignment="center"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <Button-->
-<!--                android:id="@+id/btnCancel"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:text="Batal"-->
-<!--                android:layout_marginHorizontal="5dp"-->
-<!--                android:background="@drawable/btn_solid"-->
-<!--                android:textAlignment="center"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_margin="5dp"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-<!--            <Button-->
-<!--                android:id="@+id/btnShowCat"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:text="Lihat"-->
-<!--                android:layout_marginHorizontal="5dp"-->
-<!--                android:background="@drawable/btn_solid"-->
-<!--                android:textAlignment="center"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <Button-->
-<!--                android:id="@+id/btnSetuju"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:text="Setuju"-->
-<!--                android:layout_marginHorizontal="5dp"-->
-<!--                android:background="@drawable/btn_solid"-->
-<!--                android:textAlignment="center"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <Button-->
-<!--                android:id="@+id/btnNav"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:text="Kunjungi"-->
-<!--                android:layout_marginHorizontal="5dp"-->
-<!--                android:background="@drawable/btn_solid"-->
-<!--                android:textAlignment="center"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--        </LinearLayout>-->
-<!--    </LinearLayout>-->
-
-    <ListView
-        android:id="@+id/messages_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:divider="#fff"
-        android:transcriptMode="alwaysScroll" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/salem"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clipToPadding="false"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editText"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:ems="10"
-            android:hint="Write a message"
-            android:inputType="text"
-            android:paddingHorizontal="10dp"
-            android:text="" />
+            android:background="@color/beige"
+            android:elevation="12dp">
 
-        <ImageButton
-            android:id="@+id/btnSend"
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="18dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/mmedium"
+                android:text="Pesan"
+                android:textColor="@color/navy"
+                android:textSize="20sp" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <!--    <LinearLayout-->
+        <!--        android:padding="5dp"-->
+        <!--        android:orientation="vertical"-->
+        <!--        android:background="@color/salem"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content">-->
+        <!--        <LinearLayout-->
+        <!--            android:layout_margin="5dp"-->
+        <!--            android:gravity="center"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content">-->
+        <!--            <Button-->
+        <!--                android:id="@+id/btnBlokir"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:text="blokir"-->
+        <!--                android:layout_marginHorizontal="5dp"-->
+        <!--                android:background="@drawable/btn_solid"-->
+        <!--                android:textAlignment="center"-->
+        <!--                android:layout_height="wrap_content"/>-->
+        <!--            <Button-->
+        <!--                android:id="@+id/btnEndChat"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:text="Akhiri Chat"-->
+        <!--                android:layout_marginHorizontal="5dp"-->
+        <!--                android:background="@drawable/btn_solid"-->
+        <!--                android:textAlignment="center"-->
+        <!--                android:layout_height="wrap_content"/>-->
+        <!--            <Button-->
+        <!--                android:id="@+id/btnCancel"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:text="Batal"-->
+        <!--                android:layout_marginHorizontal="5dp"-->
+        <!--                android:background="@drawable/btn_solid"-->
+        <!--                android:textAlignment="center"-->
+        <!--                android:layout_height="wrap_content"/>-->
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_margin="5dp"-->
+        <!--            android:gravity="center"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content">-->
+        <!--            <Button-->
+        <!--                android:id="@+id/btnShowCat"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:text="Lihat"-->
+        <!--                android:layout_marginHorizontal="5dp"-->
+        <!--                android:background="@drawable/btn_solid"-->
+        <!--                android:textAlignment="center"-->
+        <!--                android:layout_height="wrap_content"/>-->
+        <!--            <Button-->
+        <!--                android:id="@+id/btnSetuju"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:text="Setuju"-->
+        <!--                android:layout_marginHorizontal="5dp"-->
+        <!--                android:background="@drawable/btn_solid"-->
+        <!--                android:textAlignment="center"-->
+        <!--                android:layout_height="wrap_content"/>-->
+        <!--            <Button-->
+        <!--                android:id="@+id/btnNav"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:text="Kunjungi"-->
+        <!--                android:layout_marginHorizontal="5dp"-->
+        <!--                android:background="@drawable/btn_solid"-->
+        <!--                android:textAlignment="center"-->
+        <!--                android:layout_height="wrap_content"/>-->
+        <!--        </LinearLayout>-->
+        <!--    </LinearLayout>-->
+
+        <ListView
+            android:id="@+id/messages_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:divider="#fff"
+            android:transcriptMode="alwaysScroll" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/salem"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:hint="Write a message"
+                android:inputType="text"
+                android:paddingHorizontal="10dp"
+                android:text="" />
+
+            <ImageButton
+                android:id="@+id/btnSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/ic_send_black_24dp"
+                android:padding="20dp"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/popup"
+        android:elevation="20dp"
+        android:layout_width="fill_parent"
+        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_match"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".feature.MainActivity">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/x_button_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/mmedium"
+            android:text="Selamat Anda Menemukan"
+            android:textAlignment="center"
+            android:textColor="@color/navy"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/mmedium"
+            android:text="Pasangan Kucing Baru!"
+            android:textAlignment="center"
+            android:textColor="@color/navy"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="10dp"
-            android:background="@drawable/ic_send_black_24dp"
-            android:padding="20dp"
-            android:scaleType="fitCenter" />
-    </LinearLayout>
-</LinearLayout>
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView18"
+            app:layout_constraintStart_toStartOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/textView18">
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/photo_cat_1"
+                android:layout_width="125dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius="10dp" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/photo_cat_2"
+                android:layout_width="125dp"
+                android:layout_height="150dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintCircleRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/photo_cat_1"
+                app:riv_corner_radius="10dp" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="65dp"
+                android:layout_height="50dp"
+                android:src="@drawable/cat_gender"
+                app:layout_constraintBottom_toBottomOf="@+id/photo_cat_2"
+                app:layout_constraintEnd_toStartOf="@+id/photo_cat_2"
+                app:layout_constraintStart_toEndOf="@+id/photo_cat_1"
+                app:layout_constraintTop_toTopOf="@+id/photo_cat_1" />
+
+            <TextView
+                android:id="@+id/mate_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/mmedium"
+                android:text="Kamu dan user2 nampaknya saling menyukai"
+                android:textAlignment="center"
+                android:textColor="@color/navy"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/photo_cat_2"
+                app:layout_constraintStart_toStartOf="@+id/photo_cat_1"
+                app:layout_constraintTop_toBottomOf="@+id/photo_cat_1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <dita.shafira.mate.component.BtnSolid
+            android:id="@+id/btnVisit"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/mmedium"
+            android:text="Kunjungi Pemilik"
+            android:textAllCaps="false"
+            android:textColor="@color/navy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout6" />
+
+        <dita.shafira.mate.component.BtnOutline
+            android:id="@+id/btnLater"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:clickable="true"
+            android:fontFamily="@font/mmedium"
+            android:text="Nanti Saja"
+            android:textAllCaps="false"
+            android:textColor="@color/navy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnVisit" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
