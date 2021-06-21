@@ -117,8 +117,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="0dp"
-        android:layout_height="140dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:paddingVertical="10dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/menu_layout"
@@ -152,10 +153,10 @@
             app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
         <TextView
-            android:id="@+id/textView23"
+            android:id="@+id/tv_nav"
             android:layout_width="0dp"
             android:layout_height="30dp"
-            android:text="Lokasi Saya Sekarang"
+            android:text="Sesuaikan lokasi sekarang"
             android:fontFamily="@font/mlight"
             android:textColor="@color/jeans"
             android:textSize="18sp"
@@ -164,27 +165,27 @@
             app:layout_constraintTop_toBottomOf="@+id/textView22"
             tools:ignore="DuplicateIds" />
 
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:text="Rumah"
-            android:textColor="@color/jeans"
-            android:fontFamily="@font/mlight"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/textView23"
-            app:layout_constraintTop_toBottomOf="@+id/textView23" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView25"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:text="Rumah"-->
+<!--            android:textColor="@color/jeans"-->
+<!--            android:fontFamily="@font/mlight"-->
+<!--            android:textSize="18sp"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/textView23"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView23" />-->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:text="Tambah Lokasi Baru"
-            android:textColor="@color/navy"
-            android:fontFamily="@font/mmedium"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView25"
-            app:layout_constraintTop_toBottomOf="@+id/textView25" />
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:text="Tambah Lokasi Baru"-->
+<!--            android:textColor="@color/navy"-->
+<!--            android:fontFamily="@font/mmedium"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/textView25"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView25" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -220,7 +221,7 @@
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_marginEnd="16dp"
-            android:text="0 km"
+            android:text="1 km"
             android:fontFamily="@font/mlight"
             android:textAlignment="textEnd"
             android:textColor="@color/salem"
@@ -245,9 +246,9 @@
             android:id="@+id/seekBar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:valueFrom="0"
+            android:valueFrom="1"
             android:valueTo="150"
-            android:value="0"
+            android:value="1"
             android:theme="@style/slider_red"
             app:layout_constraintEnd_toEndOf="@+id/textView29"
             app:layout_constraintStart_toStartOf="@+id/textView26"

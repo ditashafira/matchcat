@@ -126,10 +126,10 @@ public interface ApiService {
     );
 
     @GET("cat/me/love/{cat_id}")
-    Call<Cat> catLove(@Path("cat_id") String cat_id);
+    Call<Mating> catLove(@Path("cat_id") String cat_id);
 
     @GET("cat/me/married/{cat_id}")
-    Call<Cat> catMarried(@Path("cat_id") String cat_id);
+    Call<List<Mating>> catMarried(@Path("cat_id") String cat_id);
 
     @FormUrlEncoded
     @POST("cat/me/search")
@@ -189,6 +189,7 @@ public interface ApiService {
     Call<Response> userRead2(
             @Field("id") int id
     );
+
 
 
 }

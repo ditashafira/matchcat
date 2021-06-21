@@ -55,7 +55,8 @@ public class MyCatAdapter extends RecyclerView.Adapter<MyCatAdapter.ViewHolder> 
         } else {
             holder.sex.setText("Betina");
         }
-        holder.age.setText(calculateAge(cats.get(position).getBirth()) + " / " + cats.get(position).getRace().getTitle());
+        holder.race.setText(cats.get(position).getRace().getTitle());
+        holder.age.setText(calculateAge(cats.get(position).getBirth()));
         Glide.with(context)
                 .load(BASE_URL_STORAGE+cats.get(position).getPhoto())
                 .centerCrop()
@@ -82,6 +83,8 @@ public class MyCatAdapter extends RecyclerView.Adapter<MyCatAdapter.ViewHolder> 
         @BindView(R.id.textView15)
         TextView sex;
         @BindView(R.id.textView16)
+        TextView race;
+        @BindView(R.id.age)
         TextView age;
 
         public ViewHolder(@NonNull View itemView) {

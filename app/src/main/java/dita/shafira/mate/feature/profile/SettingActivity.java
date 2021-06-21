@@ -68,24 +68,26 @@ public class SettingActivity extends AppCompatActivity {
         alert.setPositiveButton("Sesuaikan", (dialog, which) -> {
             gpsTracker = new GpsTracker(SettingActivity.this);
             if (gpsTracker.canGetLocation()) {
-                Log.d("TAG", "setNavigation: "+String.valueOf(gpsTracker.getLatitude())+ String.valueOf(gpsTracker.getLongitude()));
-                Call<Response> call = Service.getInstance().getApi().updateLocation(MyApp.db.userDao().user().get(0).getId(), String.valueOf(gpsTracker.getLatitude()), String.valueOf(gpsTracker.getLongitude()));
-                call.enqueue(new Callback<Response>() {
-                    @Override
-                    public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                        Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
-                    }
+                if (gpsTracker.getLongitude() != 0 && gpsTracker.getLatitude() != 0) {
+                    Call<Response> call = Service.getInstance().getApi().updateLocation(MyApp.db.userDao().user().get(0).getId(), String.valueOf(gpsTracker.getLatitude()), String.valueOf(gpsTracker.getLongitude()));
+                    call.enqueue(new Callback<Response>() {
+                        @Override
+                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                            Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                        }
 
-                    @Override
-                    public void onFailure(Call<Response> call, Throwable t) {
-                        Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } else {
-                gpsTracker.showSettingsAlert();
+                        @Override
+                        public void onFailure(Call<Response> call, Throwable t) {
+                            Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    gpsTracker.showSettingsAlert();
+                }
+                dialog.dismiss();
             }
-            dialog.dismiss();
         });
+
         alert.setNegativeButton("Batalkan", (dialog, which) -> dialog.dismiss());
         alert.show();
     }

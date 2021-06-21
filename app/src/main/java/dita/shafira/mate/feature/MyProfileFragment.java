@@ -93,9 +93,10 @@ public class MyProfileFragment extends Fragment {
         try {
             addresses = geocoder.getFromLocation(Double.parseDouble(user.getLatitude()), Double.parseDouble(user.getLongitude()), 1);
             String cityName = addresses.get(0).getSubAdminArea();
-            String stateName = addresses.get(0).getAddressLine(1);
-            String countryName = addresses.get(0).getAddressLine(2);
-            location.setText(cityName);
+            if (!cityName.equals("")){
+                location.setText(cityName);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
