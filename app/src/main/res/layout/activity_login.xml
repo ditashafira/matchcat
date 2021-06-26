@@ -38,7 +38,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/btnSolid"
         style="@style/MyTextInputLayout"
-        app:startIconDrawable="@drawable/ic_user"
+        app:startIconDrawable="@drawable/ic_user_2"
         app:startIconTintMode="multiply"
         app:endIconMode="clear_text"
         app:endIconTint="@color/gray"
@@ -56,7 +56,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
-            android:drawableLeft="@drawable/ic_user"
+
+            android:drawableLeft="@drawable/ic_user_2"
             android:drawablePadding="10dp"
             android:inputType="textEmailAddress"
             style="@style/MyTextInputEditText"

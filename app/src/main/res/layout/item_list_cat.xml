@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="25dp"
     android:layout_width="275dp"
-    android:layout_height="500dp"
+    android:layout_height="520dp"
     android:layout_margin="10dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Umur (thn)/Ras"
+            android:text="Ras"
             android:textAlignment="center"
             android:fontFamily="@font/mlight"
             android:textSize="18sp"
@@ -78,6 +78,22 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        <TextView
+            android:id="@+id/age"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Umur (thn)"
+            android:textAlignment="center"
+            android:fontFamily="@font/mlight"
+            android:textSize="18sp"
+            android:textColor="@color/navy"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/imageView10"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -2,7 +2,6 @@ package dita.shafira.mate.feature;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,26 +43,18 @@ public class LoginActivity extends AppCompatActivity {
     void setBtnSolid(View solid) {
         loginBtn.setEnabled(false);
         progressBar.setVisibility(View.VISIBLE);
-
         Call<ResponseLogin> call = Service.getInstance().getApi().login(email.getText().toString(), password.getText().toString());
         call.enqueue(new Callback<ResponseLogin>() {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-//                if (response.code() == 200) {
-                    Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
-                    if (response.body().getStatus().equals("success")) {
-                        MyApp.db.userDao().nukeTable();
-                        MyApp.db.userDao().login(response.body().getContent().getUser());
-                        Intent intent = new Intent(getBaseContext(), MainMenuActivity.class);
-                        startActivity(intent);
-                        LoginActivity.this.finish();
-//                    }else{
-//                        Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
-//                        progressBar.setVisibility(View.INVISIBLE);
-//                        loginBtn.setEnabled(true);
-//                    }
-                }
-                else{
+                Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
+                if (response.body().getStatus().equals("success")) {
+                    MyApp.db.userDao().nukeTable();
+                    MyApp.db.userDao().login(response.body().getContent().getUser());
+                    Intent intent = new Intent(getBaseContext(), MainMenuActivity.class);
+                    startActivity(intent);
+                    LoginActivity.this.finish();
+                } else {
                     Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.INVISIBLE);
                     loginBtn.setEnabled(true);
@@ -72,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                Toast.makeText(getBaseContext(),t.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), t.getMessage(), Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.INVISIBLE);
                 loginBtn.setEnabled(true);
             }

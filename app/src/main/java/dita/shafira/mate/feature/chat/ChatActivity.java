@@ -9,13 +9,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.bumptech.glide.Glide;
 import com.scaledrone.lib.Listener;
 import com.scaledrone.lib.Message;
 import com.scaledrone.lib.Room;
@@ -39,40 +43,25 @@ import dita.shafira.mate.service.Service;
 import retrofit2.Call;
 import retrofit2.Callback;
 
+import static dita.shafira.mate.service.Service.BASE_URL_STORAGE;
+
 public class ChatActivity extends AppCompatActivity {
     private final String channelID = "4j2YDJyLvZlippLG";
     @BindView(R.id.editText)
     EditText editText;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.mate_description)
+    TextView tvMate;
+    @BindView(R.id.photo_cat_1)
+    ImageView photoCat1;
+    @BindView(R.id.photo_cat_2)
+    ImageView photoCat2;
+    @BindView(R.id.popup)
+    ConstraintLayout popup;
     User user;
     Room room1;
     int a;
-    //    @OnClick(R.id.btnBlokir)
-//    void setBtnBlokir(View view) {
-//
-//    }
-//    @OnClick(R.id.btnCancel)
-//    void setBtnCancel(View view) {
-//
-//    }
-//    @OnClick(R.id.btnNav)
-//    void setBtnNav(View view) {
-//
-//    }
-//
-//    @OnClick(R.id.btnEndChat)
-//    void setBtnEndChat(View view) {
-//
-//    }
-//    @OnClick(R.id.btnShowCat)
-//    void setBtnShow(View view) {
-//
-//    }
-//    @OnClick(R.id.btnSetuju)
-//    void setBtnSetuju(View view) {
-//
-//    }
     private boolean user1;
     private int statusMate;
     private Context context;
@@ -180,6 +169,32 @@ public class ChatActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @OnClick(R.id.btnLater)
+    void setLater(View view) {
+        popup.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.btnVisit)
+    void setVisit(View view) {
+        String lat, lon;
+        if (user1) {
+            lat = getIntent().getStringExtra("user1lat");
+            lon = getIntent().getStringExtra("user1long");
+        } else {
+            lat = getIntent().getStringExtra("user2lat");
+            lon = getIntent().getStringExtra("user2long");
+        }
+        String uri = "http://maps.google.com/maps?daddr=" + lat + "," + lon;
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.close)
+    void setGone(View view) {
+        popup.setVisibility(View.GONE);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -198,7 +213,18 @@ public class ChatActivity extends AppCompatActivity {
         roomName = String.valueOf(getIntent().getIntExtra("chatRoom", 0));
         user1 = getIntent().getBooleanExtra("user1", false);
         statusMate = getIntent().getIntExtra("status_mate", 0);
-        Log.d("TAG", "onCreate: " + statusMate);
+        if (statusMate == 1) {
+            popup.setVisibility(View.VISIBLE);
+            tvMate.setText(getIntent().getStringExtra("cat1") + " dan " + getIntent().getStringExtra("cat2") + " nampaknya  saling menyukai");
+            Glide.with(context)
+                    .load(BASE_URL_STORAGE + getIntent().getStringExtra("catPhoto1"))
+                    .centerCrop()
+                    .into(photoCat1);
+            Glide.with(context)
+                    .load(BASE_URL_STORAGE + getIntent().getStringExtra("catPhoto2"))
+                    .centerCrop()
+                    .into(photoCat2);
+        }
         scaledrone = new Scaledrone(channelID);
         scaledrone.connect(new Listener() {
             @Override
@@ -343,4 +369,9 @@ public class ChatActivity extends AppCompatActivity {
 //    public void setSupportActionBar(Toolbar supportActionBar) {
 //        this.supportActionBar = supportActionBar;
 //    }
+
+    @OnClick(R.id.imageView11)
+    void setBtnSolid(View solid){
+        super.onBackPressed();
+    }
 }

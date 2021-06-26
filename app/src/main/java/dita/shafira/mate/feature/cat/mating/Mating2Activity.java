@@ -1,13 +1,15 @@
 package dita.shafira.mate.feature.cat.mating;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
@@ -18,7 +20,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dita.shafira.mate.R;
+import dita.shafira.mate.database.MyApp;
 import dita.shafira.mate.model.Cat;
+import dita.shafira.mate.model.Response;
+import dita.shafira.mate.service.Service;
+import dita.shafira.mate.util.GpsTracker;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 import static dita.shafira.mate.service.Service.BASE_URL_STORAGE;
 import static dita.shafira.mate.util.Helper.calculateAge;
@@ -48,19 +56,52 @@ public class Mating2Activity extends AppCompatActivity {
     int searchAge;
     int searchRace;
     boolean searchFilter;
+    GpsTracker gpsTracker;
+    private Context context;
 
+    @OnClick(R.id.tv_nav)
+    void setNav(View nav) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(Mating2Activity.this);
+        alert.setTitle("Sesuaikan lokasi mapping");
+        alert.setMessage("Pastikan lokasi benar dan gps menyala");
+        alert.setPositiveButton("Sesuaikan", (dialog, which) -> {
+            gpsTracker = new GpsTracker(Mating2Activity.this);
+            if (gpsTracker.canGetLocation()) {
+                if (gpsTracker.getLongitude() != 0 && gpsTracker.getLatitude() != 0) {
+                    Call<Response> call = Service.getInstance().getApi().updateLocation(MyApp.db.userDao().user().get(0).getId(), String.valueOf(gpsTracker.getLatitude()), String.valueOf(gpsTracker.getLongitude()));
+                    call.enqueue(new Callback<Response>() {
+                        @Override
+                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                            Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<Response> call, Throwable t) {
+                            Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    gpsTracker.showSettingsAlert();
+                }
+                dialog.dismiss();
+            }
+        });
+        alert.setNegativeButton("Batalkan", (dialog, which) -> dialog.dismiss());
+        alert.show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mating_2);
         ButterKnife.bind(this);
+        context = this;
         Cat cat = getIntent().getExtras().getParcelable("cat_id");
         Glide.with(this)
-                .load(BASE_URL_STORAGE+cat.getPhoto())
+                .load(BASE_URL_STORAGE + cat.getPhoto())
                 .centerCrop()
                 .into(photo);
-        Log.d("TAG", "onCreate: "+cat.getBirth());
+        Log.d("TAG", "onCreate: " + cat.getBirth());
         age.setText(calculateAge(cat.getBirth()));
 
         name.setText(cat.getName());
@@ -77,11 +118,11 @@ public class Mating2Activity extends AppCompatActivity {
                 .into(photo);
         seekBar.addOnChangeListener((slider, value, fromUser) -> {
             distance.setText((int) value + " km");
-            searchDistance= (int) value;
-            searchAge=calculateAgeMonth(cat.getBirth());
-            searchSex=cat.getSex();
-            searchRace=cat.getRaceId();
-            searchFilter=filter.isChecked();
+            searchDistance = (int) value;
+            searchAge = calculateAgeMonth(cat.getBirth());
+            searchSex = cat.getSex();
+            searchRace = cat.getRaceId();
+            searchFilter = filter.isChecked();
         });
 
     }
@@ -89,11 +130,11 @@ public class Mating2Activity extends AppCompatActivity {
     @OnClick(R.id.btnLightSolid)
     void setBtnLightSolid(View Lightsolid) {
         Intent intent = new Intent(this, Mating3Activity.class);
-        intent.putExtra("searchDistance",searchDistance);
-        intent.putExtra("searchAge",searchAge);
-        intent.putExtra("searchSex",searchSex);
-        intent.putExtra("searchFilter",searchFilter);
-        intent.putExtra("searchRace",searchRace);
+        intent.putExtra("searchDistance", searchDistance);
+        intent.putExtra("searchAge", searchAge);
+        intent.putExtra("searchSex", searchSex);
+        intent.putExtra("searchFilter", searchFilter);
+        intent.putExtra("searchRace", searchRace);
         startActivity(intent);
     }
 

@@ -33,12 +33,48 @@ public interface ApiService {
             @Field("password") String password);
 
     @FormUrlEncoded
+    @POST("update/profile")
+    Call<ResponseLogin> updateProfile(
+            @Field("id") String user_id,
+            @Field("name") String usernmae,
+            @Field("address") String location,
+            @Field("password") String password);
+
+    @Multipart
+    @POST("update/profile/photo")
+    Call<ResponseLogin> updateProfilePhoto(
+            @Part("id") String user_id,
+            @Part MultipartBody.Part image
+    );
+//    @Multipart
+//    @POST("cat/update/photo")
+//    Call<Response> catUpdatePhoto(
+//            @Part("cat_id") String catId,
+//            @Part MultipartBody.Part image
+//    );
+
+    @FormUrlEncoded
+    @POST("update/profile/status")
+    Call<Response> userUpdateStatus(
+            @Field("id") String id,
+            @Field("status") String status
+    );
+
+    @FormUrlEncoded
     @POST("check/login")
     Call<Response> checkLogin(@Field("token") String token);
 
     @FormUrlEncoded
     @POST("check/login")
     Call<Response> logout(@Field("token") String token);
+
+    @FormUrlEncoded
+    @POST("update/location")
+    Call<Response> updateLocation(
+            @Field("id") String id,
+            @Field("latitude") String latitude,
+            @Field("longitude") String longitude
+    );
 
 
     @GET("cat/race")
@@ -97,10 +133,10 @@ public interface ApiService {
     );
 
     @GET("cat/me/love/{cat_id}")
-    Call<Cat> catLove(@Path("cat_id") String cat_id);
+    Call<Mating> catLove(@Path("cat_id") String cat_id);
 
     @GET("cat/me/married/{cat_id}")
-    Call<Cat> catMarried(@Path("cat_id") String cat_id);
+    Call<List<Mating>> catMarried(@Path("cat_id") String cat_id);
 
     @FormUrlEncoded
     @POST("cat/me/search")
@@ -160,6 +196,7 @@ public interface ApiService {
     Call<Response> userRead2(
             @Field("id") int id
     );
+
 
 
 }
