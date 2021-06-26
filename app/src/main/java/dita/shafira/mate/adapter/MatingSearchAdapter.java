@@ -2,6 +2,7 @@ package dita.shafira.mate.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,7 +86,7 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Mating5Activity.class);
-                intent.putExtra("cat_target",cats.get(position));
+                intent.putExtra("cat_target", (Parcelable) cats.get(position));
                 holder.itemView.getContext().startActivity(intent);
             }
         });
