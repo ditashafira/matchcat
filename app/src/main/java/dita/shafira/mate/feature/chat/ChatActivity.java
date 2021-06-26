@@ -201,10 +201,7 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
         ButterKnife.bind(this);
         context = getBaseContext();
-        if (!user1)
-            a = 1;
-        else
-            a = 2;
+
         user = MyApp.db.userDao().user().get(0);
         setSupportActionBar(toolbar);
         messageAdapter = new MessageAdapter(this);
@@ -212,6 +209,10 @@ public class ChatActivity extends AppCompatActivity {
         messagesView.setAdapter(messageAdapter);
         roomName = String.valueOf(getIntent().getIntExtra("chatRoom", 0));
         user1 = getIntent().getBooleanExtra("user1", false);
+        if (user1)
+            a = 1;
+        else
+            a = 2;
         statusMate = getIntent().getIntExtra("status_mate", 0);
         if (statusMate == 1) {
             popup.setVisibility(View.VISIBLE);
@@ -281,6 +282,18 @@ public class ChatActivity extends AppCompatActivity {
                     runOnUiThread(() -> {
                         messageAdapter.add(fmessage);
                         messagesView.setSelection(messagesView.getCount() - 1);
+                    });
+                    Call<Response> call1 = Service.getInstance().getApi().userRead(Integer.parseInt(roomName), a);
+                    call1.enqueue(new Callback<Response>() {
+                        @Override
+                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Response> call, Throwable t) {
+
+                        }
                     });
                 });
             }

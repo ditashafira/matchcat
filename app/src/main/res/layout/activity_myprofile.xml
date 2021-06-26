@@ -106,7 +106,7 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Banyuwangi"
+            android:text="-"
             android:textColor="@color/army"
             android:textSize="15dp"
             android:fontFamily="@font/mmedium"

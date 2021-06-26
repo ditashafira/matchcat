@@ -7,17 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Cat implements Parcelable {
 
-    public static final Parcelable.Creator<Cat> CREATOR = new Parcelable.Creator<Cat>() {
-        @Override
-        public Cat createFromParcel(Parcel source) {
-            return new Cat(source);
-        }
 
-        @Override
-        public Cat[] newArray(int size) {
-            return new Cat[size];
-        }
-    };
     @SerializedName("race")
     private Race race;
     @SerializedName("sex")
@@ -55,10 +45,6 @@ public class Cat implements Parcelable {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Cat(Parcel source) {
-        readFromParcel(source);
     }
 
     public Race getRace() {
@@ -105,45 +91,6 @@ public class Cat implements Parcelable {
         return photo;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(this.race, flags);
-        dest.writeInt(this.raceId);
-        dest.writeInt(this.sex);
-        dest.writeString(this.birth);
-        dest.writeInt(this.vaccine);
-        dest.writeString(this.createdAt);
-        dest.writeString(this.updatedAt);
-        dest.writeString(this.lastVaccine);
-        dest.writeString(this.lastParasite);
-        dest.writeInt(this.userId);
-        dest.writeString(this.name);
-        dest.writeInt(this.id);
-        dest.writeInt(this.status);
-        dest.writeString(this.photo);
-    }
-
-    public void readFromParcel(Parcel source) {
-        this.race = source.readParcelable(Race.class.getClassLoader());
-        this.raceId = source.readInt();
-        this.sex = source.readInt();
-        this.birth = source.readString();
-        this.vaccine = source.readInt();
-        this.createdAt = source.readString();
-        this.updatedAt = source.readString();
-        this.lastVaccine = source.readString();
-        this.lastParasite = source.readString();
-        this.userId = source.readInt();
-        this.name = source.readString();
-        this.id = source.readInt();
-        this.status = source.readInt();
-        this.photo = source.readString();
-    }
 
     public int getSex() {
         return sex;
@@ -168,4 +115,79 @@ public class Cat implements Parcelable {
     public void setLastParasite(String lastParasite) {
         this.lastParasite = lastParasite;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.race, flags);
+        dest.writeInt(this.sex);
+        dest.writeInt(this.raceId);
+        dest.writeString(this.birth);
+        dest.writeString(this.createdAt);
+        dest.writeString(this.updatedAt);
+        dest.writeInt(this.vaccine);
+        dest.writeString(this.lastVaccine);
+        dest.writeString(this.lastParasite);
+        dest.writeInt(this.userId);
+        dest.writeString(this.name);
+        dest.writeString(this.photo);
+        dest.writeInt(this.id);
+        dest.writeInt(this.status);
+        dest.writeParcelable(this.user, flags);
+    }
+
+    public void readFromParcel(Parcel source) {
+        this.race = source.readParcelable(Race.class.getClassLoader());
+        this.sex = source.readInt();
+        this.raceId = source.readInt();
+        this.birth = source.readString();
+        this.createdAt = source.readString();
+        this.updatedAt = source.readString();
+        this.vaccine = source.readInt();
+        this.lastVaccine = source.readString();
+        this.lastParasite = source.readString();
+        this.userId = source.readInt();
+        this.name = source.readString();
+        this.photo = source.readString();
+        this.id = source.readInt();
+        this.status = source.readInt();
+        this.user = source.readParcelable(User.class.getClassLoader());
+    }
+
+    public Cat() {
+    }
+
+    protected Cat(Parcel in) {
+        this.race = in.readParcelable(Race.class.getClassLoader());
+        this.sex = in.readInt();
+        this.raceId = in.readInt();
+        this.birth = in.readString();
+        this.createdAt = in.readString();
+        this.updatedAt = in.readString();
+        this.vaccine = in.readInt();
+        this.lastVaccine = in.readString();
+        this.lastParasite = in.readString();
+        this.userId = in.readInt();
+        this.name = in.readString();
+        this.photo = in.readString();
+        this.id = in.readInt();
+        this.status = in.readInt();
+        this.user = in.readParcelable(User.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Cat> CREATOR = new Parcelable.Creator<Cat>() {
+        @Override
+        public Cat createFromParcel(Parcel source) {
+            return new Cat(source);
+        }
+
+        @Override
+        public Cat[] newArray(int size) {
+            return new Cat[size];
+        }
+    };
 }

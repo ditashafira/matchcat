@@ -70,7 +70,7 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("update/location")
-    Call<Response> updateLocation(
+    Call<ResponseLogin> updateLocation(
             @Field("id") String id,
             @Field("latitude") String latitude,
             @Field("longitude") String longitude
@@ -197,6 +197,10 @@ public interface ApiService {
             @Field("id") int id
     );
 
-
+    @FormUrlEncoded
+    @POST("cat/remove")
+    Call<Response> catDelete(
+            @Field("cat_id") int id
+    );
 
 }

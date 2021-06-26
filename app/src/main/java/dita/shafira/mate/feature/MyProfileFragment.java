@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,7 @@ public class MyProfileFragment extends Fragment {
     RecyclerView recyclerView;
     @BindView(R.id.progress)
     ProgressBar progressBar;
-//    @BindView(R.id.textView8)
+    //    @BindView(R.id.textView8)
 //    TextView city;
     MyProfileCat adapter;
     Context context;
@@ -81,7 +82,16 @@ public class MyProfileFragment extends Fragment {
         context = getContext();
         User user = MyApp.db.userDao().user().get(0);
         username.setText(user.getName());
-        email.setText(user.getEmail());
+        String s;
+//        int maxLength = (user.getEmail().length() < 21)?user.getEmail().length():21;
+        if (user.getEmail().length()>21){
+            s = user.getEmail().substring(0, 20)+"...";
+        }
+        else{
+            s=user.getEmail();
+        }
+//        String inputString = user.getEmail().substring(0, maxLength)+"...";
+        email.setText(s);
         if (user.getPhoto() != null) {
             Glide.with(context)
                     .load(BASE_URL_STORAGE + user.getPhoto())
@@ -91,12 +101,13 @@ public class MyProfileFragment extends Fragment {
         Geocoder geocoder = new Geocoder(context, Locale.getDefault());
         List<Address> addresses = null;
         try {
-            addresses = geocoder.getFromLocation(Double.parseDouble(user.getLatitude()), Double.parseDouble(user.getLongitude()), 1);
-            String cityName = addresses.get(0).getSubAdminArea();
-            if (!cityName.equals("")){
-                location.setText(cityName);
+            if (user.getLatitude()!=null && user.getLongitude()!=null) {
+                addresses = geocoder.getFromLocation(Double.parseDouble(user.getLatitude()), Double.parseDouble(user.getLongitude()), 1);
+                String cityName = addresses.get(0).getSubAdminArea();
+                if (!cityName.equals("")) {
+                    location.setText(cityName);
+                }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }

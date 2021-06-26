@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +18,7 @@ import butterknife.OnClick;
 import dita.shafira.mate.R;
 import dita.shafira.mate.database.MyApp;
 import dita.shafira.mate.feature.cat.EditCatActivity;
+import dita.shafira.mate.feature.cat.ListCatActivity;
 import dita.shafira.mate.feature.cat.WishListActivity;
 import dita.shafira.mate.model.Cat;
 import dita.shafira.mate.model.User;
@@ -68,7 +70,7 @@ public class Mating4Activity extends AppCompatActivity {
                 } else {
                     catsex.setText("Betina");
                 }
-                if (cat.getLastParasite().equals(null)){
+                if (cat.getLastParasite()==null){
                     catparasite.setText(" - ");
                 }else{
                     catparasite.setText(cat.getLastParasite());
@@ -92,6 +94,23 @@ public class Mating4Activity extends AppCompatActivity {
     void settext(View text) {
         Intent intent = new Intent(this, WishListActivity.class);
         startActivity(intent);
+    }
+    @OnClick(R.id.btnOutline_2)
+    void setDelete(View view){
+        Call<dita.shafira.mate.model.Response> call = Service.getInstance().getApi().catDelete(cat.getId());
+        call.enqueue(new Callback<dita.shafira.mate.model.Response>() {
+            @Override
+            public void onResponse(Call<dita.shafira.mate.model.Response> call, Response<dita.shafira.mate.model.Response> response) {
+                Toast.makeText(getBaseContext(),response.body().getMsg(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getBaseContext(), ListCatActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFailure(Call<dita.shafira.mate.model.Response> call, Throwable t) {
+
+            }
+        });
     }
 
     @OnClick(R.id.imageView11)

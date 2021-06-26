@@ -21,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import dita.shafira.mate.R;
 import dita.shafira.mate.database.MyApp;
+import dita.shafira.mate.feature.cat.mating.Mating5Activity;
 import dita.shafira.mate.feature.chat.ChatActivity;
 import dita.shafira.mate.model.CatSearch;
 import dita.shafira.mate.model.Response;
@@ -80,6 +81,14 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
                 }
             });
         });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Mating5Activity.class);
+                intent.putExtra("cat_target",cats.get(position));
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
         holder.chat.setOnClickListener(v -> {
             Call<Response> call = Service.getInstance().getApi().catMating(catId, cats.get(position).getId(), 0, 1);
             call.enqueue(new Callback<Response>() {
@@ -109,7 +118,6 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
 
                         }
                     });
-
                 }
 
                 @Override
@@ -117,6 +125,7 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
 
                 }
             });
+
         });
     }
 

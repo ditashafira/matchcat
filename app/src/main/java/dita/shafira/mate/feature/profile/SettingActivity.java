@@ -17,11 +17,12 @@ import dita.shafira.mate.R;
 import dita.shafira.mate.database.MyApp;
 import dita.shafira.mate.feature.LoginActivity;
 import dita.shafira.mate.feature.MainMenuActivity;
-import dita.shafira.mate.model.Response;
+import dita.shafira.mate.model.ResponseLogin;
 import dita.shafira.mate.service.Service;
 import dita.shafira.mate.util.GpsTracker;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SettingActivity extends AppCompatActivity {
     TextView register;
@@ -69,15 +70,17 @@ public class SettingActivity extends AppCompatActivity {
             gpsTracker = new GpsTracker(SettingActivity.this);
             if (gpsTracker.canGetLocation()) {
                 if (gpsTracker.getLongitude() != 0 && gpsTracker.getLatitude() != 0) {
-                    Call<Response> call = Service.getInstance().getApi().updateLocation(MyApp.db.userDao().user().get(0).getId(), String.valueOf(gpsTracker.getLatitude()), String.valueOf(gpsTracker.getLongitude()));
-                    call.enqueue(new Callback<Response>() {
+                    Call<ResponseLogin> call = Service.getInstance().getApi().updateLocation(MyApp.db.userDao().user().get(0).getId(), String.valueOf(gpsTracker.getLatitude()), String.valueOf(gpsTracker.getLongitude()));
+                    call.enqueue(new Callback<ResponseLogin>() {
                         @Override
-                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                        public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                            MyApp.db.userDao().nukeTable();
+                            MyApp.db.userDao().login(response.body().getContent().getUser());
                             Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
-                        public void onFailure(Call<Response> call, Throwable t) {
+                        public void onFailure(Call<ResponseLogin> call, Throwable t) {
                             Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
