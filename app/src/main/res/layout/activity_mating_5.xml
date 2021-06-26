@@ -171,8 +171,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="#FFFFFF"
-        android:src="@drawable/location_cat"
+        android:src="@drawable/cat_location_2"
         app:layout_constraintStart_toStartOf="@+id/text_1"
         app:layout_constraintTop_toBottomOf="@+id/text_1" />
 
