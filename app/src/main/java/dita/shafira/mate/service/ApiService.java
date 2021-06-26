@@ -54,6 +54,13 @@ public interface ApiService {
 //    );
 
     @FormUrlEncoded
+    @POST("update/profile/status")
+    Call<Response> userUpdateStatus(
+            @Field("id") String id,
+            @Field("status") String status
+    );
+
+    @FormUrlEncoded
     @POST("check/login")
     Call<Response> checkLogin(@Field("token") String token);
 
