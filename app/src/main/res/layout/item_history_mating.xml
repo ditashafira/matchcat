@@ -53,14 +53,15 @@
         <TextView
             android:id="@+id/tv_cat_name_1"
             android:layout_width="wrap_content"
-            android:layout_height="13dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/mmedium"
             android:text="CatName"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:textColor="@color/navy"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/photo_cat_1"
             app:layout_constraintStart_toStartOf="@+id/photo_cat_1"
             app:layout_constraintTop_toBottomOf="@+id/photo_cat_1" />
 
@@ -68,30 +69,30 @@
             android:id="@+id/tv_cat_sex_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/mlight"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
+            android:fontFamily="@font/mlight"
             android:text="Kelamin"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:textColor="@color/navy"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/photo_cat_1"
+            app:layout_constraintStart_toStartOf="@+id/photo_cat_1"
             app:layout_constraintTop_toBottomOf="@+id/tv_cat_name_1" />
 
         <TextView
             android:id="@+id/tv_cat_race_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/mlight"
             android:layout_marginTop="5dp"
+            android:fontFamily="@font/mlight"
             android:text="Umur (thn)/Ras"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:textColor="@color/navy"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/photo_cat_1"
+            app:layout_constraintStart_toStartOf="@+id/photo_cat_1"
             app:layout_constraintTop_toBottomOf="@+id/tv_cat_sex_1" />
 
         <TextView
@@ -99,13 +100,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="CatName"
             android:fontFamily="@font/mmedium"
-            android:textAlignment="textStart"
+            android:text="CatName"
+            android:textAlignment="center"
             android:textColor="@color/navy"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/photo_cat_2"
+            app:layout_constraintStart_toStartOf="@+id/photo_cat_2"
             app:layout_constraintTop_toBottomOf="@+id/photo_cat_1" />
 
         <TextView
@@ -113,27 +115,29 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Kelamin"
             android:fontFamily="@font/mlight"
-            android:textAlignment="textStart"
+            android:text="Kelamin"
+            android:textAlignment="center"
             android:textColor="@color/navy"
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/tv_cat_name_2"
+            app:layout_constraintStart_toStartOf="@+id/tv_cat_name_2"
             app:layout_constraintTop_toBottomOf="@+id/tv_cat_name_2" />
 
         <TextView
             android:id="@+id/tv_cat_race_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/mlight"
             android:layout_marginTop="5dp"
+            android:fontFamily="@font/mlight"
             android:text="Umur (thn)/Ras"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:textColor="@color/navy"
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/tv_cat_sex_2"
+            app:layout_constraintStart_toStartOf="@+id/tv_cat_sex_2"
             app:layout_constraintTop_toBottomOf="@+id/tv_cat_sex_2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

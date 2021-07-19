@@ -33,6 +33,12 @@ public interface ApiService {
             @Field("password") String password);
 
     @FormUrlEncoded
+    @POST("password/reset")
+    Call<Response> resetPassword(
+            @Field("email") String email
+    );
+
+    @FormUrlEncoded
     @POST("update/profile")
     Call<ResponseLogin> updateProfile(
             @Field("id") String user_id,
@@ -55,9 +61,9 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("update/profile/status")
-    Call<Response> userUpdateStatus(
+    Call<ResponseLogin> userUpdateStatus(
             @Field("id") String id,
-            @Field("status") String status
+            @Field("status") int status
     );
 
     @FormUrlEncoded
@@ -129,11 +135,12 @@ public interface ApiService {
     @Multipart
     @POST("cat/add/photo")
     Call<Response> catAddPhoto(
+            @Part("cat_id") String catId,
             @Part MultipartBody.Part image
     );
 
     @GET("cat/me/love/{cat_id}")
-    Call<Mating> catLove(@Path("cat_id") String cat_id);
+    Call<List<Mating>> catLove(@Path("cat_id") int cat_id);
 
     @GET("cat/me/married/{cat_id}")
     Call<List<Mating>> catMarried(@Path("cat_id") String cat_id);

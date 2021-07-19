@@ -37,6 +37,8 @@ import butterknife.OnClick;
 import dita.shafira.mate.R;
 import dita.shafira.mate.adapter.MessageAdapter;
 import dita.shafira.mate.database.MyApp;
+import dita.shafira.mate.feature.cat.mating.Mating6Activity;
+import dita.shafira.mate.model.Mating;
 import dita.shafira.mate.model.Response;
 import dita.shafira.mate.model.User;
 import dita.shafira.mate.service.Service;
@@ -62,6 +64,7 @@ public class ChatActivity extends AppCompatActivity {
     User user;
     Room room1;
     int a;
+    Mating mating;
     private boolean user1;
     private int statusMate;
     private Context context;
@@ -84,24 +87,35 @@ public class ChatActivity extends AppCompatActivity {
         }
         if (statusMate != 1) {
             menu.getItem(5).setVisible(false);
+            menu.getItem(3).setVisible(false);
+        }else{
+            menu.getItem(4).setVisible(false);
         }
+        menu.getItem(1).setVisible(false);
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Call<Response> call;
+        Call<Response> call;Intent intent;
+
         switch (item.getItemId()) {
             case R.id.show:
-//                Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?daddr=20.5666,45.345"));
-//                startActivity(intent);
-                return false;
+                 intent = new Intent(ChatActivity.this, Mating6Activity.class);
+                if (user1) {
+                    intent.putExtra("catId",mating.getCatId2());
+                }else{
+                    intent.putExtra("catId",mating.getCatId1());
+                }
+                startActivity(intent);
+                break;
             case R.id.endchat:
                 call = Service.getInstance().getApi().statusChat(Integer.parseInt(roomName), 3);
                 call.enqueue(new Callback<Response>() {
                     @Override
                     public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                         Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                        ChatActivity.super.onBackPressed();
                     }
 
                     @Override
@@ -113,14 +127,14 @@ public class ChatActivity extends AppCompatActivity {
             case R.id.nav:
                 String lat, lon;
                 if (user1) {
-                    lat = getIntent().getStringExtra("user1lat");
-                    lon = getIntent().getStringExtra("user1long");
+                    lat = mating.getCat1().getUser().getLatitude();
+                    lon = mating.getCat1().getUser().getLongitude();
                 } else {
-                    lat = getIntent().getStringExtra("user2lat");
-                    lon = getIntent().getStringExtra("user2long");
+                    lat = mating.getCat2().getUser().getLatitude();
+                    lon = mating.getCat2().getUser().getLongitude();
                 }
                 String uri = "http://maps.google.com/maps?daddr=" + lat + "," + lon;
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+                 intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
                 startActivity(intent);
                 break;
             case R.id.accepted:
@@ -177,12 +191,12 @@ public class ChatActivity extends AppCompatActivity {
     @OnClick(R.id.btnVisit)
     void setVisit(View view) {
         String lat, lon;
-        if (user1) {
-            lat = getIntent().getStringExtra("user1lat");
-            lon = getIntent().getStringExtra("user1long");
+        if (!user1) {
+            lat = mating.getCat1().getUser().getLatitude();
+            lon = mating.getCat1().getUser().getLongitude();
         } else {
-            lat = getIntent().getStringExtra("user2lat");
-            lon = getIntent().getStringExtra("user2long");
+            lat = mating.getCat2().getUser().getLatitude();
+            lon = mating.getCat2().getUser().getLongitude();
         }
         String uri = "http://maps.google.com/maps?daddr=" + lat + "," + lon;
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
@@ -194,35 +208,34 @@ public class ChatActivity extends AppCompatActivity {
         popup.setVisibility(View.GONE);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         ButterKnife.bind(this);
         context = getBaseContext();
-
+        mating = getIntent().getParcelableExtra("mating");
         user = MyApp.db.userDao().user().get(0);
         setSupportActionBar(toolbar);
         messageAdapter = new MessageAdapter(this);
         messagesView = findViewById(R.id.messages_view);
         messagesView.setAdapter(messageAdapter);
-        roomName = String.valueOf(getIntent().getIntExtra("chatRoom", 0));
+        roomName = String.valueOf(mating.getId());
         user1 = getIntent().getBooleanExtra("user1", false);
         if (user1)
             a = 1;
         else
             a = 2;
-        statusMate = getIntent().getIntExtra("status_mate", 0);
+        statusMate = mating.getStatusMate();
         if (statusMate == 1) {
             popup.setVisibility(View.VISIBLE);
-            tvMate.setText(getIntent().getStringExtra("cat1") + " dan " + getIntent().getStringExtra("cat2") + " nampaknya  saling menyukai");
+            tvMate.setText(mating.getCat1().getName() + " dan " + mating.getCat2().getName() + " nampaknya  saling menyukai");
             Glide.with(context)
-                    .load(BASE_URL_STORAGE + getIntent().getStringExtra("catPhoto1"))
+                    .load(BASE_URL_STORAGE + mating.getCat1().getPhoto())
                     .centerCrop()
                     .into(photoCat1);
             Glide.with(context)
-                    .load(BASE_URL_STORAGE + getIntent().getStringExtra("catPhoto2"))
+                    .load(BASE_URL_STORAGE + mating.getCat2().getPhoto())
                     .centerCrop()
                     .into(photoCat2);
         }
@@ -384,7 +397,7 @@ public class ChatActivity extends AppCompatActivity {
 //    }
 
     @OnClick(R.id.imageView11)
-    void setBtnSolid(View solid){
+    void setBtnSolid(View solid) {
         super.onBackPressed();
     }
 }

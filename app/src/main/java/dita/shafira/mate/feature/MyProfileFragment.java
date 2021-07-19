@@ -104,7 +104,7 @@ public class MyProfileFragment extends Fragment {
             if (user.getLatitude()!=null && user.getLongitude()!=null) {
                 addresses = geocoder.getFromLocation(Double.parseDouble(user.getLatitude()), Double.parseDouble(user.getLongitude()), 1);
                 String cityName = addresses.get(0).getSubAdminArea();
-                if (!cityName.equals("")) {
+                if (cityName != null) {
                     location.setText(cityName);
                 }
             }

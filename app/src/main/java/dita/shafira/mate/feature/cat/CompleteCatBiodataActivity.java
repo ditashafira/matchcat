@@ -41,9 +41,9 @@ public class CompleteCatBiodataActivity extends AppCompatActivity {
         context=getBaseContext();
         recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
         ArrayList<CatPhoto> catPhotos= new ArrayList<>();
-        adapter=new CatPhotosAdapter(context,catPhotos);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
         Calendar myCalendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override

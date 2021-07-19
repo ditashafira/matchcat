@@ -1,6 +1,7 @@
 package dita.shafira.mate.feature.cat;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,11 +15,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
@@ -29,6 +31,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -36,8 +39,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dita.shafira.mate.R;
+import dita.shafira.mate.adapter.CatPhotosAdapter;
 import dita.shafira.mate.database.MyApp;
+import dita.shafira.mate.feature.cat.mating.Mating3Activity;
+import dita.shafira.mate.feature.cat.mating.Mating4Activity;
 import dita.shafira.mate.model.Cat;
+import dita.shafira.mate.model.CatPhoto;
 import dita.shafira.mate.model.Response;
 import dita.shafira.mate.model.User;
 import dita.shafira.mate.service.Service;
@@ -61,25 +68,63 @@ public class EditCatActivity extends AppCompatActivity {
     ImageView mainphoto;
     @BindView(R.id.btnSimpan)
     Button btnSimpan;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    CatPhotosAdapter adapter;
     User user;
     Bitmap bitmap;
     int parvac;
+    Context context;
+    Cat cat;
+    void setData(){
+        Call<Cat> call = Service.getInstance().getApi().catMeDetail(MyApp.db.userDao().user().get(0).getId(), String.valueOf(cat.getId()));
+        call.enqueue(new Callback<Cat>() {
+            @Override
+            public void onResponse(Call<Cat> call, retrofit2.Response<Cat> response) {
+                cat = response.body();
+                adapter.setCatPhotos((ArrayList<CatPhoto>) cat.getPhotos());
+                catname.setText(cat.getName());
+                catparasite.setText(cat.getLastParasite());
+                catvaccine.setText(cat.getLastVaccine());
+                Glide.with(getBaseContext())
+                        .load(BASE_URL_STORAGE + cat.getPhoto())
+                        .centerCrop()
+                        .into(mainphoto);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Cat> call, Throwable t) {
+
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_cat);
         ButterKnife.bind(this);
-        catname.setText(getIntent().getStringExtra("catname"));
-        catparasite.setText(getIntent().getStringExtra("catparasite"));
-        catvaccine.setText(getIntent().getStringExtra("catvaccine"));
+        context = this;
+        cat = getIntent().getParcelableExtra("cat");
+        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        adapter = new CatPhotosAdapter(context,cat);
+        recyclerView.setAdapter(adapter);
+
+        setData();
+        adapter.setCatPhotos((ArrayList<CatPhoto>) cat.getPhotos());
+        catname.setText(cat.getName());
+        catparasite.setText(cat.getLastParasite());
+        catvaccine.setText(cat.getLastVaccine());
         Glide.with(getBaseContext())
-                .load(BASE_URL_STORAGE + getIntent().getStringExtra("catphoto"))
+                .load(BASE_URL_STORAGE + cat.getPhoto())
                 .centerCrop()
                 .into(mainphoto);
 
-        Calendar myCalendar = Calendar.getInstance();
+
         user = MyApp.db.userDao().user().get(0);
+        Calendar myCalendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -93,35 +138,37 @@ public class EditCatActivity extends AppCompatActivity {
             private void updateLabel() {
                 String myFormat = "YY-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ENGLISH);
-                if (parvac==0) {
+                if (parvac == 0) {
                     catvaccine.setText(sdf.format(myCalendar.getTime()));
-                }else{
+                } else {
                     catparasite.setText(sdf.format(myCalendar.getTime()));
                 }
             }
 
         };
         catparasite.setOnClickListener(v -> {
-            parvac=1;
+            parvac = 1;
             new DatePickerDialog(EditCatActivity.this, date, myCalendar
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show();
         });
         catvaccine.setOnClickListener(v -> {
-            parvac=0;
+            parvac = 0;
             new DatePickerDialog(EditCatActivity.this, date, myCalendar
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show();
         });
     }
+
     @OnClick(R.id.imageView11)
-    void setText(View text){
+    void setText(View text) {
         super.onBackPressed();
     }
+
     @OnClick(R.id.btnSimpan)
-    void setBtnSimpan(View view){
+    void setBtnSimpan(View view) {
         Call<Response> call = Service.getInstance().getApi().catUpdate(
-                String.valueOf(getIntent().getIntExtra("catid",0)),
+                String.valueOf(cat.getId()),
                 catname.getText().toString(),
                 catparasite.getText().toString(),
                 catvaccine.getText().toString()
@@ -130,9 +177,11 @@ public class EditCatActivity extends AppCompatActivity {
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                Intent intent = new Intent(getBaseContext(), ListCatActivity.class);
+                Intent intent = new Intent(getBaseContext(), Mating4Activity.class);
+                intent.putExtra("cat_id",cat.getId());
                 Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
                 startActivity(intent);
+                EditCatActivity.this.finish();
             }
 
             @Override
@@ -147,6 +196,13 @@ public class EditCatActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(Intent.createChooser(intent, "select image"), 200);
+    }
+
+    @OnClick(R.id.btn_add)
+    void setBtnAdd(View solid) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(Intent.createChooser(intent, "select image"), 201);
     }
 
     private File createTempFile(Bitmap bitmap) {
@@ -177,7 +233,12 @@ public class EditCatActivity extends AppCompatActivity {
                     .load(bitmap)
                     .centerCrop()
                     .into(mainphoto);
-            uploadImage(bitmap);
+            uploadImage(bitmap, 200);
+        }
+        if (requestCode == 201) {
+            Uri uri = data.getData();
+            bitmap = getDecodedImageFromUri(uri);
+            uploadImage(bitmap, 201);
         }
     }
 
@@ -217,22 +278,23 @@ public class EditCatActivity extends AppCompatActivity {
         return inSampleSize;
     }
 
-    public void uploadImage(Bitmap gambarbitmap) {
+    public void uploadImage(Bitmap gambarbitmap, int requestCode) {
         File file = createTempFile(gambarbitmap);
         RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
         MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), reqFile);
-        Call<Response> call =
-                Service.getInstance().getApi().
-                        catUpdatePhoto(
-                                String.valueOf(getIntent().getIntExtra("catid",0)),
-                                body
-                        );
+        Call<Response> call;
+        if (requestCode == 200) {
+            call = Service.getInstance().getApi().catUpdatePhoto(String.valueOf(cat.getId()), body);
+            Log.d("TAGa", "uploadImage: c");
+        } else {
+            call = Service.getInstance().getApi().catAddPhoto(String.valueOf(cat.getId()), body);
+            Log.d("TAGa", "uploadImage: b");
+        }
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<dita.shafira.mate.model.Response> call, retrofit2.Response<Response> response) {
-                Intent intent = new Intent(getBaseContext(), CompleteCatBiodataActivity.class);
                 Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
-                startActivity(intent);
+             setData();
             }
 
             @Override
@@ -240,6 +302,7 @@ public class EditCatActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+
 // finally, kirim map dan body pada param interface retrofit
     }
 

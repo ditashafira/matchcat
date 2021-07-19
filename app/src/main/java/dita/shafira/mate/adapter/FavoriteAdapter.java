@@ -2,8 +2,6 @@ package dita.shafira.mate.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +22,8 @@ import dita.shafira.mate.R;
 import dita.shafira.mate.database.MyApp;
 import dita.shafira.mate.feature.cat.mating.Mating5Activity;
 import dita.shafira.mate.feature.chat.ChatActivity;
-import dita.shafira.mate.model.Cat;
 import dita.shafira.mate.model.CatSearch;
+import dita.shafira.mate.model.Mating;
 import dita.shafira.mate.model.Response;
 import dita.shafira.mate.model.User;
 import dita.shafira.mate.service.Service;
@@ -36,14 +34,16 @@ import static dita.shafira.mate.adapter.MatingAdapter.catId;
 import static dita.shafira.mate.service.Service.BASE_URL_STORAGE;
 import static dita.shafira.mate.util.Helper.calculateAge;
 
-public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapter.ViewHolder> {
-    private final ArrayList<CatSearch> cats;
+
+public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
+    private final ArrayList<Mating> cats;
     Context context;
     int userId;
 
-    public MatingSearchAdapter(Context context) {
+    public FavoriteAdapter(Context context,int catId) {
         this.context = context;
         this.cats = new ArrayList<>();
+        dita.shafira.mate.adapter.MatingAdapter.catId=catId;
         userId = Integer.parseInt(MyApp.db.userDao().user().get(0).getId());
     }
 
@@ -57,11 +57,11 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.age.setText(calculateAge(cats.get(position).getBirth()));
-        holder.name.setText(cats.get(position).getName());
-        holder.sex.setText(cats.get(position).getRace());
+        holder.age.setText(calculateAge(cats.get(position).getCat2().getBirth()));
+        holder.name.setText(cats.get(position).getCat2().getName());
+        holder.sex.setText(cats.get(position).getCat2().getRace().getTitle());
         Glide.with(context)
-                .load(BASE_URL_STORAGE + cats.get(position).getPhoto())
+                .load(BASE_URL_STORAGE + cats.get(position).getCat2().getPhoto())
                 .centerCrop()
                 .into(holder.photo);
         holder.itemView.setOnClickListener(v -> {
@@ -70,7 +70,7 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
 //            holder.itemView.getContext().startActivity(intent);
         });
         holder.like.setOnClickListener(v -> {
-            Call<Response> call = Service.getInstance().getApi().catMating(catId, cats.get(position).getId(), 3, 0);
+            Call<Response> call = Service.getInstance().getApi().catMating(dita.shafira.mate.adapter.MatingAdapter.catId, cats.get(position).getCatId2(), 3, 0);
             call.enqueue(new Callback<Response>() {
                 @Override
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
@@ -85,15 +85,15 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
         });
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, Mating5Activity.class);
-            intent.putExtra("catId", cats.get(position).getId());
+            intent.putExtra("catId", cats.get(position).getCat2().getId());
             holder.itemView.getContext().startActivity(intent);
         });
         holder.chat.setOnClickListener(v -> {
-            Call<Response> call = Service.getInstance().getApi().catMating(catId, cats.get(position).getId(), 0, 1);
+            Call<Response> call = Service.getInstance().getApi().catMating(dita.shafira.mate.adapter.MatingAdapter.catId, cats.get(position).getCatId2(), 0, 1);
             call.enqueue(new Callback<Response>() {
                 @Override
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                    Call<Response> call2 = Service.getInstance().getApi().catMating(catId, cats.get(position).getId(), 0, 1);
+                    Call<Response> call2 = Service.getInstance().getApi().catMating(dita.shafira.mate.adapter.MatingAdapter.catId, cats.get(position).getCatId2(), 0, 1);
                     call2.enqueue(new Callback<Response>() {
                         @Override
                         public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
@@ -126,7 +126,7 @@ public class MatingSearchAdapter extends RecyclerView.Adapter<MatingSearchAdapte
         return cats.size();
     }
 
-    public void setCats(ArrayList<CatSearch> list) {
+    public void setCats(ArrayList<Mating> list) {
         cats.clear();
         cats.addAll(list);
         notifyDataSetChanged();

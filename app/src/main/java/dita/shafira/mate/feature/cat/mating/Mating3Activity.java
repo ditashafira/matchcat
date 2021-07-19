@@ -41,8 +41,9 @@ public class Mating3Activity extends AppCompatActivity {
     RecyclerView recyclerView;
     @BindView(R.id.progress)
     ProgressBar progressBar;
+    @BindView(R.id.blank)
+    ImageView blank;
 
-    TextView register;
     MatingSearchAdapter adapter;
     Context context;
     ArrayList<CatSearch> list;
@@ -77,14 +78,13 @@ public class Mating3Activity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<CatSearch>> call, Response<List<CatSearch>> response) {
                 list = (ArrayList<CatSearch>) response.body();
-                Log.d("chceckTAG", "onResponse: "+response.body().size());
                 adapter = new MatingSearchAdapter(context);
                 if (list!=null){
                     adapter.setCats(list);
                 }else{
                     Toast.makeText(getBaseContext(),"tidak ditemukan kucing diarea "+searchDistance +" km didaerah anda",Toast.LENGTH_LONG).show();
+                    blank.setVisibility(View.VISIBLE);
                 }
-
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.INVISIBLE);

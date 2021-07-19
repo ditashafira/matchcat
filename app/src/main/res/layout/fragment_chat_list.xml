@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,24 +8,7 @@
     android:background="@color/salem"
     android:clipToPadding="false"
     android:focusableInTouchMode="true">
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@color/beige"-->
-<!--        android:elevation="12dp" >-->
-<!--        -->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Pesan"-->
-<!--            tex-->
-<!--            android:fontFamily="@font/mmedium"-->
-<!--            android:textSize="20sp"-->
-<!--            android:textColor="@color/navy"-->
-<!--            android:layout_marginStart="30dp"-->
-<!--            android:layout_marginTop="8dp"/>-->
-<!--    </androidx.appcompat.widget.Toolbar>-->
+
     <TextView
         android:id="@+id/textView17"
         android:layout_width="match_parent"
@@ -35,12 +19,33 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="25sp"
-        android:textStyle="bold" />
-
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        tools:listitem="@layout/item_chat_list"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp"
+        tools:listitem="@layout/item_chat_list" />
+
+    <ImageView
+        android:id="@+id/blank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blank_chat"
+        android:visibility="gone"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

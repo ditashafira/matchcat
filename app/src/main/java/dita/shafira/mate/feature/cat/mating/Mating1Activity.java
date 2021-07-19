@@ -3,6 +3,7 @@ package dita.shafira.mate.feature.cat.mating;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ public class Mating1Activity extends AppCompatActivity {
     RecyclerView recyclerView;
     @BindView(R.id.progress)
     ProgressBar progressBar;
+    @BindView(R.id.blank)
+    ImageView blank;
 
     MatingAdapter adapter;
     Context context;
@@ -44,22 +47,29 @@ public class Mating1Activity extends AppCompatActivity {
         context = this;
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        adapter = new MatingAdapter(context);recyclerView.setAdapter(adapter);
+
         Call<List<Cat>> call = Service.getInstance().getApi().catMe(MyApp.db.userDao().user().get(0).getId());
         call.enqueue(new Callback<List<Cat>>() {
             @Override
             public void onResponse(Call<List<Cat>> call, Response<List<Cat>> response) {
-                list = (ArrayList<Cat>) response.body();
-                adapter = new MatingAdapter(context);
-                adapter.setCats(list);
-                recyclerView.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
-                progressBar.setVisibility(View.INVISIBLE);
+                if (response.body().size()!=0) {
+                    list = (ArrayList<Cat>) response.body();
+                    adapter.setCats(list);
+                    adapter.notifyDataSetChanged();
+                    progressBar.setVisibility(View.INVISIBLE);
+                    blank.setVisibility(View.GONE);
+                }
+                else{
+                    blank.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             public void onFailure(Call<List<Cat>> call, Throwable t) {
                 Toast.makeText(getBaseContext(), t.getMessage(), Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.INVISIBLE);
+                blank.setVisibility(View.VISIBLE);
             }
         });
 

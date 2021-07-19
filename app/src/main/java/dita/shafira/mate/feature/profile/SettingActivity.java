@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dita.shafira.mate.R;
@@ -25,7 +26,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SettingActivity extends AppCompatActivity {
-    TextView register;
+    @BindView(R.id.sc_notification)
+    SwitchCompat scNotification;
+    @BindView(R.id.sc_hide)
+    SwitchCompat scHide;
     private GpsTracker gpsTracker;
     private Context context;
 
@@ -39,6 +43,34 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
         context = this;
+        boolean isCheck;
+        isCheck = MyApp.db.userDao().user().get(0).getStatus() == 1;
+        scHide.setChecked(isCheck);
+        scHide.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            scHide.setClickable(false);
+            int check;
+            if (isChecked) {
+                check = 1;
+            } else {
+                check = 2;
+            }
+            Call<ResponseLogin> call = Service.getInstance().getApi().userUpdateStatus(MyApp.db.userDao().user().get(0).getId(), check);
+            call.enqueue(new Callback<ResponseLogin>() {
+                @Override
+                public void onResponse(Call<dita.shafira.mate.model.ResponseLogin> call, Response<dita.shafira.mate.model.ResponseLogin> response) {
+                    MyApp.db.userDao().nukeTable();
+                    MyApp.db.userDao().login(response.body().getContent().getUser());
+                    Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                    scHide.setClickable(true);
+                }
+
+                @Override
+                public void onFailure(Call<dita.shafira.mate.model.ResponseLogin> call, Throwable t) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    scHide.setClickable(true);
+                }
+            });
+        });
     }
 
     @OnClick(R.id.toolbar_back)
@@ -59,6 +91,7 @@ public class SettingActivity extends AppCompatActivity {
         Toast.makeText(getBaseContext(), "Anda telah log out", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(getBaseContext(), LoginActivity.class);
         startActivity(intent);
+        SettingActivity.this.finish();
     }
 
     @OnClick(R.id.navigation)

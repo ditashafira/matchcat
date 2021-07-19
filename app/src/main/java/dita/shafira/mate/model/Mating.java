@@ -1,8 +1,11 @@
 package dita.shafira.mate.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Mating {
+public class Mating implements Parcelable {
     @SerializedName("id")
     private int id;
     @SerializedName("cat_id_1")
@@ -27,6 +30,7 @@ public class Mating {
     private Cat cat1;
     @SerializedName("cat_2")
     private Cat cat2;
+
 
     public Mating(int id, int catId1, int catId2, int statusChat, int statusMate, int userId1, int userId2, String lastChat, String createdAt, String updatedAt, Cat cat1, Cat cat2) {
         this.id = id;
@@ -139,4 +143,67 @@ public class Mating {
     public void setCat2(Cat cat2) {
         this.cat2 = cat2;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeInt(this.catId1);
+        dest.writeInt(this.catId2);
+        dest.writeInt(this.statusChat);
+        dest.writeInt(this.statusMate);
+        dest.writeInt(this.userId1);
+        dest.writeInt(this.userId2);
+        dest.writeString(this.lastChat);
+        dest.writeString(this.createdAt);
+        dest.writeString(this.updatedAt);
+        dest.writeParcelable(this.cat1, flags);
+        dest.writeParcelable(this.cat2, flags);
+    }
+
+    public void readFromParcel(Parcel source) {
+        this.id = source.readInt();
+        this.catId1 = source.readInt();
+        this.catId2 = source.readInt();
+        this.statusChat = source.readInt();
+        this.statusMate = source.readInt();
+        this.userId1 = source.readInt();
+        this.userId2 = source.readInt();
+        this.lastChat = source.readString();
+        this.createdAt = source.readString();
+        this.updatedAt = source.readString();
+        this.cat1 = source.readParcelable(Cat.class.getClassLoader());
+        this.cat2 = source.readParcelable(Cat.class.getClassLoader());
+    }
+
+    protected Mating(Parcel in) {
+        this.id = in.readInt();
+        this.catId1 = in.readInt();
+        this.catId2 = in.readInt();
+        this.statusChat = in.readInt();
+        this.statusMate = in.readInt();
+        this.userId1 = in.readInt();
+        this.userId2 = in.readInt();
+        this.lastChat = in.readString();
+        this.createdAt = in.readString();
+        this.updatedAt = in.readString();
+        this.cat1 = in.readParcelable(Cat.class.getClassLoader());
+        this.cat2 = in.readParcelable(Cat.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Mating> CREATOR = new Parcelable.Creator<Mating>() {
+        @Override
+        public Mating createFromParcel(Parcel source) {
+            return new Mating(source);
+        }
+
+        @Override
+        public Mating[] newArray(int size) {
+            return new Mating[size];
+        }
+    };
 }

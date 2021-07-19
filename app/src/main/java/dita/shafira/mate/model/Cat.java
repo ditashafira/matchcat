@@ -5,6 +5,9 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cat implements Parcelable {
 
 
@@ -38,6 +41,16 @@ public class Cat implements Parcelable {
     private int status;
     @SerializedName("user")
     private User user;
+    @SerializedName("cat_photos")
+    private List<CatPhoto> photos;
+
+    public List<CatPhoto> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<CatPhoto> photos) {
+        this.photos = photos;
+    }
 
     public User getUser() {
         return user;
@@ -138,6 +151,7 @@ public class Cat implements Parcelable {
         dest.writeInt(this.id);
         dest.writeInt(this.status);
         dest.writeParcelable(this.user, flags);
+        dest.writeList(this.photos);
     }
 
     public void readFromParcel(Parcel source) {
@@ -156,6 +170,8 @@ public class Cat implements Parcelable {
         this.id = source.readInt();
         this.status = source.readInt();
         this.user = source.readParcelable(User.class.getClassLoader());
+        this.photos = new ArrayList<CatPhoto>();
+        source.readList(this.photos, CatPhoto.class.getClassLoader());
     }
 
     public Cat() {
@@ -177,9 +193,11 @@ public class Cat implements Parcelable {
         this.id = in.readInt();
         this.status = in.readInt();
         this.user = in.readParcelable(User.class.getClassLoader());
+        this.photos = new ArrayList<CatPhoto>();
+        in.readList(this.photos, CatPhoto.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<Cat> CREATOR = new Parcelable.Creator<Cat>() {
+    public static final Creator<Cat> CREATOR = new Creator<Cat>() {
         @Override
         public Cat createFromParcel(Parcel source) {
             return new Cat(source);

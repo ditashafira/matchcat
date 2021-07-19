@@ -171,6 +171,7 @@ public class FillCatBiodata extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), ListCatActivity.class);
                 Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
                 startActivity(intent);
+                FillCatBiodata.this.finish();
             }
 
             @Override

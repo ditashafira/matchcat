@@ -87,17 +87,8 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
         holder.lastChat.setText(chatList.get(position).getLastChat());
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(holder.itemView.getContext(), ChatActivity.class);
-            intent.putExtra("chatRoom", chatList.get(position).getId());
+            intent.putExtra("mating", chatList.get(position));
             intent.putExtra("user1", user1);
-            intent.putExtra("cat1", chatList.get(position).getCat1().getName());
-            intent.putExtra("cat2", chatList.get(position).getCat2().getName());
-            intent.putExtra("catPhoto1", chatList.get(position).getCat1().getPhoto());
-            intent.putExtra("catPhoto2", chatList.get(position).getCat2().getPhoto());
-            intent.putExtra("status_mate",chatList.get(position).getStatusMate());
-            intent.putExtra("user2lat",chatList.get(position).getCat1().getUser().getLatitude());
-            intent.putExtra("user2long",chatList.get(position).getCat1().getUser().getLongitude());
-            intent.putExtra("user1lat",chatList.get(position).getCat2().getUser().getLatitude());
-            intent.putExtra("user1long",chatList.get(position).getCat2().getUser().getLongitude());
             holder.itemView.getContext().startActivity(intent);
         });
     }

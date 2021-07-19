@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,6 +33,8 @@ public class ChatListFragment extends Fragment {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
+    @BindView(R.id.blank)
+    ImageView blank;
     ChatListAdapter adapter;
     Context context;
     ArrayList<Mating> list;
@@ -60,11 +63,14 @@ public class ChatListFragment extends Fragment {
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                 }
+                else{
+                    blank.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             public void onFailure(Call<List<Mating>> call, Throwable t) {
-
+                blank.setVisibility(View.VISIBLE);
             }
         });
     }
