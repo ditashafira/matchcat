@@ -123,7 +123,7 @@ public class SettingActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
+    
         alert.setNegativeButton("Batalkan", (dialog, which) -> dialog.dismiss());
         alert.show();
     }

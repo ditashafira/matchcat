@@ -58,6 +58,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         boolean user1=String.valueOf(chatList.get(position).getCat1().getUserId()).equals(user.getId());
         if (user1){
+            //kita menghubungi cat1=milik kita
             Glide.with(context)
                     .load(BASE_URL_STORAGE+chatList.get(position).getCat1().getPhoto())
                     .centerCrop()
@@ -71,6 +72,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
                 holder.notif.setVisibility(View.GONE);
             }
         }else{
+            //kita dihubungi
             Glide.with(context)
                     .load(BASE_URL_STORAGE+chatList.get(position).getCat1().getPhoto())
                     .centerCrop()

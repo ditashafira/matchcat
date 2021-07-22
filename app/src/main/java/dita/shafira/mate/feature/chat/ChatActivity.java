@@ -127,11 +127,11 @@ public class ChatActivity extends AppCompatActivity {
             case R.id.nav:
                 String lat, lon;
                 if (user1) {
-                    lat = mating.getCat1().getUser().getLatitude();
-                    lon = mating.getCat1().getUser().getLongitude();
-                } else {
                     lat = mating.getCat2().getUser().getLatitude();
                     lon = mating.getCat2().getUser().getLongitude();
+                } else {
+                    lat = mating.getCat1().getUser().getLatitude();
+                    lon = mating.getCat1().getUser().getLongitude();
                 }
                 String uri = "http://maps.google.com/maps?daddr=" + lat + "," + lon;
                  intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
@@ -191,12 +191,12 @@ public class ChatActivity extends AppCompatActivity {
     @OnClick(R.id.btnVisit)
     void setVisit(View view) {
         String lat, lon;
-        if (!user1) {
-            lat = mating.getCat1().getUser().getLatitude();
-            lon = mating.getCat1().getUser().getLongitude();
-        } else {
+        if (user1) {
             lat = mating.getCat2().getUser().getLatitude();
             lon = mating.getCat2().getUser().getLongitude();
+        } else {
+            lat = mating.getCat1().getUser().getLatitude();
+            lon = mating.getCat1().getUser().getLongitude();
         }
         String uri = "http://maps.google.com/maps?daddr=" + lat + "," + lon;
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
@@ -246,6 +246,7 @@ public class ChatActivity extends AppCompatActivity {
                 Room room = scaledrone.subscribe(roomName, new RoomListener() {
                     @Override
                     public void onOpen(Room room) {
+                        //saat aktivitas dijalankan melakukan read
                         Call<Response> call1 = Service.getInstance().getApi().userRead(Integer.parseInt(roomName), a);
                         call1.enqueue(new Callback<Response>() {
                             @Override
@@ -267,13 +268,15 @@ public class ChatActivity extends AppCompatActivity {
 
                     @Override
                     public void onMessage(Room room, Message message) {
+                        //pesan masuk
+                        //cek siapa yang mengirim
                         boolean belongsToCurrentUser = message.getData().get("user_id").asText().equals(user.getId());
                         final dita.shafira.mate.model.Message fmessage = new dita.shafira.mate.model.Message(message.getData().get("msg").asText(), belongsToCurrentUser);
                         runOnUiThread(() -> {
                             messageAdapter.add(fmessage);
                             messagesView.setSelection(messagesView.getCount() - 1);
                         });
-
+                        // saat ada pesan masuk langsung read
                         Call<Response> call1 = Service.getInstance().getApi().userRead(Integer.parseInt(roomName), a);
                         call1.enqueue(new Callback<Response>() {
                             @Override
@@ -342,7 +345,6 @@ public class ChatActivity extends AppCompatActivity {
                 a = 1;
             else
                 a = 2;
-            Log.d("TAGD", "sendMessage: " + a);
             Call<Response> call = Service.getInstance().getApi().lastChat(Integer.parseInt(roomName), message, a);
             call.enqueue(new Callback<Response>() {
                 @Override
