@@ -1,7 +1,9 @@
 package dita.shafira.mate.feature.cat;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,6 +11,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +36,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -41,7 +45,6 @@ import butterknife.OnClick;
 import dita.shafira.mate.R;
 import dita.shafira.mate.adapter.CatPhotosAdapter;
 import dita.shafira.mate.database.MyApp;
-import dita.shafira.mate.feature.cat.mating.Mating3Activity;
 import dita.shafira.mate.feature.cat.mating.Mating4Activity;
 import dita.shafira.mate.model.Cat;
 import dita.shafira.mate.model.CatPhoto;
@@ -70,13 +73,17 @@ public class EditCatActivity extends AppCompatActivity {
     Button btnSimpan;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.vaccine)
+    EditText vaccine;
     CatPhotosAdapter adapter;
     User user;
     Bitmap bitmap;
     int parvac;
     Context context;
     Cat cat;
-    void setData(){
+    int vaccineValue;
+
+    void setData() {
         Call<Cat> call = Service.getInstance().getApi().catMeDetail(MyApp.db.userDao().user().get(0).getId(), String.valueOf(cat.getId()));
         call.enqueue(new Callback<Cat>() {
             @Override
@@ -90,8 +97,6 @@ public class EditCatActivity extends AppCompatActivity {
                         .load(BASE_URL_STORAGE + cat.getPhoto())
                         .centerCrop()
                         .into(mainphoto);
-
-
             }
 
             @Override
@@ -104,12 +109,13 @@ public class EditCatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        vaccineValue=0;
         setContentView(R.layout.activity_edit_cat);
         ButterKnife.bind(this);
         context = this;
         cat = getIntent().getParcelableExtra("cat");
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        adapter = new CatPhotosAdapter(context,cat);
+        adapter = new CatPhotosAdapter(context, cat);
         recyclerView.setAdapter(adapter);
 
         setData();
@@ -148,16 +154,50 @@ public class EditCatActivity extends AppCompatActivity {
         };
         catparasite.setOnClickListener(v -> {
             parvac = 1;
-            new DatePickerDialog(EditCatActivity.this, date, myCalendar
+            DatePickerDialog dialog = new DatePickerDialog(EditCatActivity.this, date, myCalendar
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                    myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                    myCalendar.get(Calendar.DAY_OF_MONTH));
+            dialog.getDatePicker().setMaxDate(new Date().getTime());
+            dialog.show();
         });
         catvaccine.setOnClickListener(v -> {
             parvac = 0;
-            new DatePickerDialog(EditCatActivity.this, date, myCalendar
+            DatePickerDialog dialog = new DatePickerDialog(EditCatActivity.this, date, myCalendar
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                    myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                    myCalendar.get(Calendar.DAY_OF_MONTH));
+            dialog.getDatePicker().setMaxDate(new Date().getTime());
+            dialog.show();
         });
+        int[] vacVal = {1, 2, 3, 4, 5};
+        String[] vacStr = {
+                "Rutin 1 tahun sekali",
+                "1.5 tahun sekali",
+                "2 tahun sekali",
+                "2.5 tahun sekali",
+                "dibawah sepuluh bulan"
+        };
+        vaccine.setInputType(InputType.TYPE_NULL);
+        vaccine.setFocusable(false);
+        vaccine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(EditCatActivity.this);
+                builder.setTitle("Pilih rutinitas vaksin");
+
+                //Pass array list di Alert dialog
+                builder.setItems(vacStr, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        vaccine.setText(vacStr[which]);
+                        vaccineValue = vacVal[which];
+                    }
+                });
+                // buat dan tampilkan alert dialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
     }
 
     @OnClick(R.id.imageView11)
@@ -171,14 +211,14 @@ public class EditCatActivity extends AppCompatActivity {
                 String.valueOf(cat.getId()),
                 catname.getText().toString(),
                 catparasite.getText().toString(),
-                catvaccine.getText().toString()
-
+                catvaccine.getText().toString(),
+                vaccineValue
         );
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 Intent intent = new Intent(getBaseContext(), Mating4Activity.class);
-                intent.putExtra("cat_id",cat.getId());
+                intent.putExtra("cat_id", cat.getId());
                 Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
                 startActivity(intent);
                 EditCatActivity.this.finish();
@@ -294,7 +334,7 @@ public class EditCatActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<dita.shafira.mate.model.Response> call, retrofit2.Response<Response> response) {
                 Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_LONG).show();
-             setData();
+                setData();
             }
 
             @Override

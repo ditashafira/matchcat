@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -210,9 +211,11 @@ public class FillCatBiodata extends AppCompatActivity {
         };
         birthday.setOnClickListener(v -> {
             // TODO Auto-generated method stub
-            new DatePickerDialog(FillCatBiodata.this, date, myCalendar
+            DatePickerDialog dialog = new DatePickerDialog(FillCatBiodata.this, date, myCalendar
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                    myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                    myCalendar.get(Calendar.DAY_OF_MONTH));
+            dialog.getDatePicker().setMaxDate(new Date().getTime());
+            dialog.show();
         });
 
         Call<List<Race>> call = Service.getInstance().getApi().catRace();

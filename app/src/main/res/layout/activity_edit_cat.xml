@@ -175,6 +175,35 @@
                     android:hint="Suntik Anti Parasit"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/btnSolid9"
+                style="@style/MyTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Pilih rutinitas vaksin"
+                app:layout_constraintEnd_toEndOf="@+id/btnSolid"
+                app:layout_constraintStart_toStartOf="@+id/btnSolid"
+                app:layout_constraintTop_toBottomOf="@+id/btnSolid3">
+
+                <!--            <Spinner-->
+                <!--                android:spinnerMode="dialog"-->
+                <!--                android:id="@+id/race"-->
+                <!--                android:popupBackground="@color/soft_guava"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="60dp"-->
+                <!--                android:background="@drawable/spinner_outline"-->
+                <!--                 />-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/vaccine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableEnd="@drawable/ic_fi_rr_angle_small_down"
+                    android:fontFamily="@font/mlight"
+                    android:textColor="@color/salem"
+                    android:textColorHint="@color/white"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <dita.shafira.mate.component.BtnSolid
@@ -189,10 +218,10 @@
                 android:textAllCaps="false"
                 android:textColor="@color/soft_guava"
                 android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/btnSolid9"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnSolid3" />
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <ImageView

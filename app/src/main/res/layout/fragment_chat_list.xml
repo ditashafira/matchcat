@@ -39,7 +39,7 @@
         android:id="@+id/blank"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/blank_chat"
+        android:src="@drawable/chat_not_found"
         android:visibility="gone"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="parent"

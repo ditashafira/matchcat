@@ -9,7 +9,7 @@ public class Helper {
     public static String calculateAge(String date) {
         LocalDate birthDate = LocalDate.parse(date);
         LocalDate currentDate = LocalDate.now();
-        return Period.between(birthDate, currentDate).getYears()+Period.between(birthDate, currentDate).getMonths()%12+" tahun "+Period.between(birthDate, currentDate).getMonths()%12+" bulan";
+        return Period.between(birthDate, currentDate).getYears()+" tahun "+Period.between(birthDate, currentDate).getMonths()%12+" bulan";
     }
 
     public static int calculateAgeMonth(String date) {

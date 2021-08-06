@@ -58,6 +58,8 @@ public class MyProfileFragment extends Fragment {
     RecyclerView recyclerView;
     @BindView(R.id.progress)
     ProgressBar progressBar;
+    @BindView(R.id.textView13)
+            TextView kucingku;
     //    @BindView(R.id.textView8)
 //    TextView city;
     MyProfileCat adapter;
@@ -122,8 +124,10 @@ public class MyProfileFragment extends Fragment {
             public void onResponse(Call<List<Cat>> call, Response<List<Cat>> response) {
                 list = (ArrayList<Cat>) response.body();
                 adapter = new MyProfileCat(context);
-                if (list != null) {
+                if (list.size()!=0) {
                     adapter.setCats(list);
+                }else{
+                    kucingku.setVisibility(View.GONE);
                 }
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();

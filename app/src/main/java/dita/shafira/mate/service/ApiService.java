@@ -109,7 +109,8 @@ public interface ApiService {
             @Field("cat_id") String catId,
             @Field("name") String name,
             @Field("last_parasite") String lastParasite,
-            @Field("last_vaccine") String lastVaccine
+            @Field("last_vaccine") String lastVaccine,
+            @Field("vaccine") int vaccine
     );
 
     @FormUrlEncoded

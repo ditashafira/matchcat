@@ -79,7 +79,7 @@ public class Mating3Activity extends AppCompatActivity {
             public void onResponse(Call<List<CatSearch>> call, Response<List<CatSearch>> response) {
                 list = (ArrayList<CatSearch>) response.body();
                 adapter = new MatingSearchAdapter(context);
-                if (list!=null){
+                if (list.size()!=0){
                     adapter.setCats(list);
                 }else{
                     Toast.makeText(getBaseContext(),"tidak ditemukan kucing diarea "+searchDistance +" km didaerah anda",Toast.LENGTH_LONG).show();

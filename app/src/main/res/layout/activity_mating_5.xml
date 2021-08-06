@@ -113,7 +113,7 @@
             android:layout_height="25dp"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/mlight"
-            android:text="Lokasi"
+            android:text="-"
             android:textAlignment="textStart"
             android:textColor="@color/navy"
             android:textSize="18sp"

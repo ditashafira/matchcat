@@ -62,6 +62,7 @@ public class Mating1Activity extends AppCompatActivity {
                 }
                 else{
                     blank.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
                 }
             }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ public class ListCatActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.blank)
+    ImageView blank;
     TextView register;
     MyCatAdapter adapter;
     Context context;
@@ -49,8 +52,10 @@ ButterKnife.bind(this);
             public void onResponse(Call<List<Cat>> call, Response<List<Cat>> response) {
                 list= (ArrayList<Cat>) response.body();
                 adapter=new MyCatAdapter(context);
-                if (list!=null) {
+                if (list.size()!=0) {
                     adapter.setCats(list);
+                }else{
+                    blank.setVisibility(View.VISIBLE);
                 }
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();

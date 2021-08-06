@@ -111,11 +111,7 @@ public class Mating4Activity extends AppCompatActivity {
         });
     }
 
-    @OnClick(R.id.btnOutline_3)
-    void settext(View text) {
-        Intent intent = new Intent(this, WishListActivity.class);
-        startActivity(intent);
-    }
+
     @OnClick(R.id.btnOutline_2)
     void setDelete(View view){
         Call<dita.shafira.mate.model.Response> call = Service.getInstance().getApi().catDelete(cat.getId());
@@ -124,6 +120,7 @@ public class Mating4Activity extends AppCompatActivity {
             public void onResponse(Call<dita.shafira.mate.model.Response> call, Response<dita.shafira.mate.model.Response> response) {
                 Toast.makeText(getBaseContext(),response.body().getMsg(),Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getBaseContext(), ListCatActivity.class);
+                Mating4Activity.this.finish();
                 startActivity(intent);
             }
 

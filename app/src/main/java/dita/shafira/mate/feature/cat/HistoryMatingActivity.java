@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,8 @@ import retrofit2.Response;
 public class HistoryMatingActivity extends AppCompatActivity {
     @BindView(R.id.recyclerView2)
     RecyclerView recyclerView;
+    @BindView(R.id.blank)
+    ImageView blank;
     private HistoryAdapter adapter;
     private ArrayList<Mating> matings;
     private Context context;
@@ -49,6 +52,8 @@ public class HistoryMatingActivity extends AppCompatActivity {
                 if (response.body().size()!=0){
                     matings.addAll(response.body());
                     adapter.setMatings(matings);
+                }else{
+                    blank.setVisibility(View.VISIBLE);
                 }
             }
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,8 @@ public class WishListActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.blank)
+    ImageView blank;
     FavoriteAdapter adapter;
     Context context;
 
@@ -48,12 +51,17 @@ public class WishListActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Mating>>() {
             @Override
             public void onResponse(Call<List<Mating>> call, Response<List<Mating>> response) {
-                adapter.setCats((ArrayList<Mating>) response.body());
+                if (response.body().size()!=0){
+                    adapter.setCats((ArrayList<Mating>) response.body());
+                }else{
+                    blank.setVisibility(View.VISIBLE);
+                }
+
             }
 
             @Override
             public void onFailure(Call<List<Mating>> call, Throwable t) {
-
+                blank.setVisibility(View.VISIBLE);
             }
         });
 
