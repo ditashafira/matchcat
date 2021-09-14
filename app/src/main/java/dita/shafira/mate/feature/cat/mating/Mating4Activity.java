@@ -37,7 +37,7 @@ import retrofit2.Response;
 import static dita.shafira.mate.service.Service.BASE_URL_STORAGE;
 import static dita.shafira.mate.util.Helper.calculateAge;
 
-public class Mating4Activity extends AppCompatActivity {
+public class Mating4Activity extends AppCompatActivity {gu
 
     @BindView(R.id.catname)
     TextView catname;
